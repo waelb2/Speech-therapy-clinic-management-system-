@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp_poo.HelloApplication">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userControllers.loginFormController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="325.0" style="-fx-background-color: #1588ea;">
+      <AnchorPane prefHeight="400.0" prefWidth="325.0" style="-fx-background-color: #1588ea;" >
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/LogoMakr-2Yyu7h.png" />
                </image>
@@ -40,13 +40,13 @@
             </Label>
             <TextField fx:id="tf_email" layoutX="63.0" layoutY="138.0" prefHeight="26.0" prefWidth="190.0" promptText="Email" style="-fx-border-color: #1588ea; -fx-border-radius: 3;" />
             <PasswordField fx:id="tf_password" layoutX="63.0" layoutY="186.0" prefHeight="26.0" prefWidth="190.0" promptText="Password" style="-fx-border-color: #1588ea; -fx-border-radius: 3;" />
-            <Button fx:id="btn_login" layoutX="63.0" layoutY="235.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: #1588ea;" text="Login " textFill="WHITE">
+            <Button fx:id="btn_login" layoutX="63.0" layoutY="235.0" onAction="#handleLogin" mnemonicParsing="false" prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Login " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
             <Label layoutX="68.0" layoutY="287.0" prefHeight="18.0" prefWidth="144.0" text="Vous êtes nouveau ?" />
-            <Hyperlink layoutX="198.0" layoutY="284.0" text="Sign up" />
+            <Hyperlink fx:id="signupHyperlink" layoutX="198.0" layoutY="284.0" onAction="#redirectSignup" text="Sign up" />
             <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="226.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/email.png" />
