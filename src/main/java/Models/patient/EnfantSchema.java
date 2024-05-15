@@ -1,10 +1,10 @@
 package Models.patient;
-
+import java.time.LocalDate;
 public class EnfantSchema  extends  PatientSchema{
     private String classeEtude ;
     private String[] numParents ;
 
-    public EnfantSchema(String nom, String prenom, String dateDeNaissance, String adresse, String classeEtude, String[] numParents) {
+    public EnfantSchema(String nom, String prenom, LocalDate  dateDeNaissance, String adresse, String classeEtude, String[] numParents) {
         super(nom, prenom, dateDeNaissance, adresse);
         this.classeEtude = classeEtude;
         this.numParents = numParents;

@@ -14,9 +14,9 @@ public abstract class PatientSchema {
         this.dateDeNaissance = dateDeNaissance;
         this.adresse = adresse;
     }
-    public PatientSchema(String nom , String preon, LocalDate dateDeNaissance){
+    public PatientSchema(String nom , String preonm, LocalDate dateDeNaissance){
         this.nom = nom;
-        this.prenom = preon;
+        this.prenom = preonm;
     }
 
 
