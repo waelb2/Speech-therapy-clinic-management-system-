@@ -5,6 +5,7 @@ import Models.Ortophoniste.OrtophonisteModel;
 import Models.Ortophoniste.OrtophonisteSchema;
 import Utils.Popups;
 import com.example.tp_poo.HelloApplication;
+import com.example.tp_poo.HelloController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,11 +17,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
-public class signupFormController {
+public class SignupFormController {
     OrtophonisteModel orthophonisteModel = HelloApplication.ortophonisteModel;
-
     @FXML
     private AnchorPane leftPanel;
     @FXML
@@ -42,7 +43,7 @@ public class signupFormController {
     protected void handleOnLeftPanelClick(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("loginForm.fxml"));
         Stage stage =(Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(),680, 500);
+        Scene scene = new Scene(fxmlLoader.load(),800, 600);
         stage.setTitle("OrthoTech");
         stage.setScene(scene);
         stage.show();
@@ -60,13 +61,23 @@ public class signupFormController {
         String mdp = tf_mdp.getText().trim().toLowerCase() ;
         String tele = tf_tele.getText().trim().toLowerCase() ;
         String adresse = tf_adresse.getText().trim().toLowerCase() ;
+
+
         try {
             if(nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || mdp.isEmpty() || tele.isEmpty() || adresse.isEmpty())   throw  new AllInputsShouldBeProvidedException();
             if(orthophonisteModel.findOrtophoniste(email) != null) throw new EmailExistsException();
 
             OrtophonisteSchema newOrthophoniste = new OrtophonisteSchema(nom, prenom,email, mdp,adresse,tele);
             orthophonisteModel.createOrtophoniste(newOrthophoniste);
-        }catch (AllInputsShouldBeProvidedException | EmailExistsException e ){
+            HelloApplication.currentUser = newOrthophoniste;
+
+            // creating the new user folder
+            String newUserPath = HelloApplication.orthophonistesDir + "/" + email;
+            File userFolder  = new File(newUserPath);
+            userFolder.mkdirs();
+            // redirecting the doctor to his dashboard
+            HelloController.redirectPage(event, "dashboard.fxml", "Dashboard");
+        }catch (AllInputsShouldBeProvidedException | EmailExistsException  e ){
             System.out.println(e.getMessage());
             Popups.showSuccessMessage("Sign-up error", e.getMessage());
         }
