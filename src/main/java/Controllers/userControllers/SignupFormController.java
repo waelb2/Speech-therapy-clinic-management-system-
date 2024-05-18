@@ -70,11 +70,16 @@ public class SignupFormController {
             OrtophonisteSchema newOrthophoniste = new OrtophonisteSchema(nom, prenom,email, mdp,adresse,tele);
             orthophonisteModel.createOrtophoniste(newOrthophoniste);
             HelloApplication.currentUser = newOrthophoniste;
+            HelloApplication.currentUserDir = "./data/orthophonistes/"+email;
 
             // creating the new user folder
             String newUserPath = HelloApplication.orthophonistesDir + "/" + email;
             File userFolder  = new File(newUserPath);
             userFolder.mkdirs();
+            // creating the patients folder
+            String patientsPath= HelloApplication.orthophonistesDir + "/" + email + "/patients";
+            File patientsFolder  = new File(patientsPath);
+            patientsFolder.mkdirs();
             // redirecting the doctor to his dashboard
             HelloController.redirectPage(event, "dashboard.fxml", "Dashboard");
         }catch (AllInputsShouldBeProvidedException | EmailExistsException  e ){

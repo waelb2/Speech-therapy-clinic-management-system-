@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.rdvControllers.RdvController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.rdvControllers.ConsultationController">
    <effect>
       <DropShadow />
    </effect>
@@ -151,7 +146,7 @@
             </Pane>
             <AnchorPane layoutX="174.0" prefHeight="600.0" prefWidth="626.0">
                <children>
-                  <AnchorPane layoutX="81.0" layoutY="138.0" prefHeight="404.0" prefWidth="463.0" style="-fx-border-color: #1588ea; -fx-background-color: #fff; -fx-border-width: 0.2;">
+                  <AnchorPane layoutX="81.0" layoutY="138.0" prefHeight="449.0" prefWidth="463.0" style="-fx-border-color: #1588ea; -fx-background-color: #fff; -fx-border-width: 0.2;">
                      <effect>
                         <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
                            <color>
@@ -160,46 +155,72 @@
                         </DropShadow>
                      </effect>
                      <children>
-                        <TextField fx:id="tf_nom" layoutX="61.0" layoutY="72.0" prefHeight="26.0" prefWidth="98.0" promptText="nom" style="-fx-border-color: #1588ea;" />
                         <Text fx:id="rdvForm" fill="#1588ea" layoutX="61.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information patient">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="tf_prenom" layoutX="182.0" layoutY="72.0" prefHeight="26.0" prefWidth="98.0" promptText="prénom" style="-fx-border-color: #1588ea;" />
-                        <TextField fx:id="tf_age" layoutX="306.0" layoutY="72.0" prefHeight="26.0" prefWidth="98.0" promptText="Age" style="-fx-border-color: #1588ea;" />
-                        <Text fill="#1588ea" layoutX="61.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date, heure et durée">
+                        <Text fill="#1588ea" layoutX="57.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date et heure">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Text>
-                        <DatePicker fx:id="datePicker" layoutX="61.0" layoutY="159.0" style="-fx-background-color: #fff; -fx-border-color: #1588ea;" stylesheets="@../../../datePicker.css" />
-                        <ComboBox fx:id="hourPicker" layoutX="254.0" layoutY="158.0" prefHeight="20.0" prefWidth="74.0" promptText="00h" style="-fx-background-color: #fff; -fx-border-color: #1588ea;" />
-                        <ComboBox fx:id="minPicker" layoutX="332.0" layoutY="158.0" prefHeight="26.0" prefWidth="74.0" promptText="00m" style="-fx-background-color: #fff; -fx-border-color: #1588ea;" />
-                        <RadioButton fx:id="radioConsultaion" layoutX="66.0" layoutY="290.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Consultation" textFill="#1588ea">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="rdvType" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <Text fill="#1588ea" layoutX="66.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Text>
-                        <RadioButton fx:id="radioSuivi" layoutX="210.0" layoutY="290.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Suivi" textFill="#1588ea" toggleGroup="$rdvType" />
-                        <RadioButton fx:id="radioAtelier" layoutX="331.0" layoutY="290.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Atelier" textFill="#1588ea" toggleGroup="$rdvType" />
-                       
-                                                <Button fx:id="btn_next" layoutX="355.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleNextButton" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Next" textFill="WHITE">
+                        <Button fx:id="btn_next" layoutX="355.0" layoutY="390.0" mnemonicParsing="false" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Next" textFill="WHITE">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="tf_duree" layoutX="61.0" layoutY="212.0" prefHeight="26.0" prefWidth="98.0" promptText="30 min" style="-fx-border-color: #1588ea;" />
+                        <Label layoutX="61.0" layoutY="74.0" prefHeight="18.0" prefWidth="38.0" text="Nom :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="label_nom" layoutX="99.0" layoutY="74.0" prefHeight="18.0" prefWidth="74.0" text="Bouguessa" textFill="#0c96ff" />
+                        <Label layoutX="191.0" layoutY="74.0" prefHeight="18.0" prefWidth="54.0" text="Prénom :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="label_prenom" layoutX="248.0" layoutY="74.0" prefHeight="18.0" prefWidth="88.0" text="Bouguessa" textFill="#0c96ff" />
+                        <Label layoutX="350.0" layoutY="74.0" prefHeight="18.0" prefWidth="38.0" text="Age :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="label_age" layoutX="388.0" layoutY="74.0" prefHeight="18.0" prefWidth="17.0" text="20" textFill="#0c96ff" />
+                        <Label layoutX="57.0" layoutY="279.0" prefHeight="18.0" prefWidth="38.0" text="Date :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="label_date" layoutX="95.0" layoutY="279.0" prefHeight="18.0" prefWidth="66.0" text="2023/01/22" textFill="#0c96ff" />
+                        <Label layoutX="187.0" layoutY="279.0" prefHeight="18.0" prefWidth="54.0" text="Heure :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="label_hour" layoutX="244.0" layoutY="279.0" prefHeight="18.0" prefWidth="18.0" text="10" textFill="#0c96ff" />
+                        <Label fx:id="label_min" layoutX="278.0" layoutY="279.0" prefHeight="18.0" prefWidth="18.0" text="10" textFill="#0c96ff" />
+                        <Label layoutX="263.0" layoutY="279.0" prefHeight="18.0" prefWidth="18.0" text="h">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="296.0" layoutY="279.0" prefHeight="18.0" prefWidth="28.0" text="min">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="272.0" layoutY="279.0" prefHeight="18.0" prefWidth="10.0" text=":">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Text fill="#1588ea" layoutX="172.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer un nouveau rendez-vous" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="50.0">
+            <Text fill="#1588ea" layoutX="172.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer une nouvelle consultation " textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="50.0">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>

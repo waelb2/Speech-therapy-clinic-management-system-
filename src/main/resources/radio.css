@@ -1,0 +1,4 @@
+.radio-button:selected .radio .dot {
+    -fx-background-color: #1588ea;
+    -fx-background-insets: 0;
+}

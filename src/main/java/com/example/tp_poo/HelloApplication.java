@@ -2,6 +2,8 @@ package com.example.tp_poo;
 
 import Models.Ortophoniste.OrtophonisteModel;
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.patient.PatientModel;
+import Models.patient.PatientSchema;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,9 +17,12 @@ import java.util.TreeMap;
 public class HelloApplication extends Application {
 
     private static TreeMap<String , OrtophonisteSchema> users  = new TreeMap<>();
+    public static TreeMap<String, PatientSchema> patients = new TreeMap<>();
     public static OrtophonisteModel ortophonisteModel = new  OrtophonisteModel(users);
+    public static PatientModel patientModel = new PatientModel(patients);
     public static String  orthophonistesDir = "./data/orthophonistes";
     public static String appUsersDir = "./data/app_users";
+    public static String currentUserDir ;
     public static OrtophonisteSchema currentUser = null ;
     final int WIDTH_SIZE = 800;
     final int HEIGHT_SIZE= 600;
@@ -40,6 +45,8 @@ public class HelloApplication extends Application {
     public  void stop() throws Exception{
         // save orthophonistes file
         ortophonisteModel.saveOrthophonistes();
+        //save patients file
+        patientModel.savePatients();
 
         super.stop();
     }

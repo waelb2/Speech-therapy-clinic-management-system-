@@ -1,6 +1,7 @@
 package Controllers.userControllers;
 
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.patient.PatientModel;
 import Utils.Popups;
 import com.example.tp_poo.HelloApplication;
 import com.example.tp_poo.HelloController;
@@ -56,6 +57,10 @@ public class LoginFormController {
             if(!orthophoniste.getMotDePasse().equals(password) ) throw new WrongPasswordException();
 
             HelloApplication.currentUser = orthophoniste;
+            HelloApplication.currentUserDir = "./data/orthophonistes/"+email;
+
+            // load patients
+            HelloApplication.patientModel.loadPatients();
             HelloController.redirectPage(event, "dashboard.fxml", "Dashboard");
 
         }catch (UserNotFoundException | EmailNotProvidedException| PasswordNotProvidedException | WrongPasswordException e){
