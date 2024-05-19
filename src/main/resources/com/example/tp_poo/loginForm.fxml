@@ -12,7 +12,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="46.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/LogoMakr-2Yyu7h.png" />
+                  <Image url="@../../../assets/LogoMakr-2Yyu7h.png" />
                </image>
                <effect>
                   <Blend />
@@ -49,12 +49,12 @@
             <Hyperlink layoutX="198.0" layoutY="284.0" text="Sign up" />
             <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="226.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/email.png" />
+                  <Image url="@../../../assets/email.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="226.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/cadenas.png" />
+                  <Image url="@../../../assets/cadenas.png" />
                </image>
             </ImageView>
          </children>

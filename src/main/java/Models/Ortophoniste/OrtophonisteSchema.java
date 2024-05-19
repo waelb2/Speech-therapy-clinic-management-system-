@@ -3,7 +3,7 @@ package Models.Ortophoniste;
 public class OrtophonisteSchema {
     private String nom ;
     private String prenom;
-    private  String email;
+    private String email;
     private String motDePasse ;
     private String adresse ;
     private String numTelephone ;
