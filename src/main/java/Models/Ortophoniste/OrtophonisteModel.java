@@ -1,8 +1,11 @@
 package Models.Ortophoniste;
 import Databases.OrtophonisteDB;
+import com.example.tp_poo.HelloApplication;
+
+import java.io.*;
 import java.util.TreeMap;
 
-public class OrtophonisteModel  implements  OrtophonisteDB{
+public class OrtophonisteModel  implements  OrtophonisteDB , Serializable{
     private TreeMap<String , OrtophonisteSchema> users  = new TreeMap<>();
 
     public OrtophonisteModel(TreeMap<String, OrtophonisteSchema> users) {
@@ -48,6 +51,23 @@ public class OrtophonisteModel  implements  OrtophonisteDB{
         }
         users.put(newOrtophoniste.getEmail(), newOrtophoniste);
         return newOrtophoniste;
+    }
+    public void saveOrthophonistes() throws IOException {
+        // save orthophonistes to orthophonistes.dat
+       try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(HelloApplication.appUsersDir +"/orthophonistes.dat"))){
+           objectOutputStream.writeObject(users);
+       }catch (IOException e ){
+           System.out.println(e.getMessage());
+       }
+    }
+    public void loadOrthophoniste() throws  IOException, ClassNotFoundException{
+        // load users from othrophonistes.dat
+       try(ObjectInputStream objectInputStream= new ObjectInputStream  (new FileInputStream (HelloApplication.appUsersDir + "/orthophonistes.dat"))){
+          this.users = (TreeMap<String, OrtophonisteSchema>) objectInputStream.readObject();
+       }
+       catch (IOException | ClassNotFoundException e ){
+           System.out.println(e.getMessage());
+       }
     }
 
     @Override
