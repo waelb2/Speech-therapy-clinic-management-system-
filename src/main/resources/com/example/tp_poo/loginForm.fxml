@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userControllers.LoginFormController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="325.0" style="-fx-background-color: #1588ea;">
+      <AnchorPane prefHeight="600.0" prefWidth="410.0" style="-fx-background-color: #1588ea;">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="46.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="94.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/LogoMakr-2Yyu7h.png" />
                </image>
@@ -19,40 +26,40 @@
                </effect>
             </ImageView>
             <Text layoutX="101.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fill="WHITE" layoutX="51.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OrthoTech">
+            <Text fill="WHITE" layoutX="81.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OrthoTech">
                <font>
                   <Font name="Sans Serif Collection" size="50.0" />
                </font>
             </Text>
-            <Label layoutX="58.0" layoutY="276.0" text="Libérez le pouvoir de votre voix." textFill="WHITE">
+            <Label layoutX="104.0" layoutY="361.0" text="Libérez le pouvoir de votre voix." textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="400.0" prefWidth="357.0" style="-fx-background-color: #fff;">
+      <AnchorPane prefHeight="600.0" prefWidth="390.0" style="-fx-background-color: #fff;">
          <children>
-            <Label layoutX="99.0" layoutY="46.0" text="Sign in" textFill="#1588ea">
+            <Label layoutX="137.0" layoutY="99.0" text="Sign in" textFill="#1588ea">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_email" layoutX="63.0" layoutY="138.0" prefHeight="26.0" prefWidth="190.0" promptText="Email" style="-fx-border-color: #1588ea; -fx-border-radius: 3;" />
-            <PasswordField fx:id="tf_password" layoutX="63.0" layoutY="186.0" prefHeight="26.0" prefWidth="190.0" promptText="Password" style="-fx-border-color: #1588ea; -fx-border-radius: 3;" />
-            <Button fx:id="btn_login" layoutX="63.0" layoutY="235.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: #1588ea;" text="Login " textFill="WHITE">
+            <TextField fx:id="tf_email" layoutX="85.0" layoutY="186.0" prefHeight="27.0" prefWidth="218.0" promptText="Email" style="-fx-border-color: #1588ea; -fx-border-radius: 3;" />
+            <PasswordField fx:id="tf_password" layoutX="85.0" layoutY="236.0" prefHeight="27.0" prefWidth="218.0" promptText="Password" style="-fx-border-color: #1588ea; -fx-border-radius: 3;" />
+            <Button fx:id="btn_login" layoutX="86.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="218.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Login " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Label layoutX="68.0" layoutY="287.0" prefHeight="18.0" prefWidth="144.0" text="Vous êtes nouveau ?" />
-            <Hyperlink layoutX="198.0" layoutY="284.0" text="Sign up" />
-            <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="226.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="85.0" layoutY="349.0" prefHeight="18.0" prefWidth="158.0" text="Vous n'avez pas de compte" />
+            <Hyperlink fx:id="signupHyperlink" layoutX="252.0" layoutY="346.0" onAction="#redirectSignup" text="Sign up" />
+            <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="276.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/email.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="226.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="276.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/cadenas.png" />
                </image>
