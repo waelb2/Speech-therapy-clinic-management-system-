@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class BilanOrthophoniqueSchema {
     private AnamneseSchema anamnese;
-    private ArrayList<EpreuveClinique> epreuvesCliniques;
-    private ArrayList<Trouble> diagnostiques;
+    //private ArrayList<EpreuveCliniqueSchema> epreuvesCliniques;
+    //private ArrayList<Trouble> diagnostiques;
     private String projetTherapeutique;
 
 
