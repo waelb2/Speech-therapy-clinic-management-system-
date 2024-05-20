@@ -1,17 +1,19 @@
 package Models.patient;
+import java.io.Serializable;
 import java.time.*;
 
-public abstract class PatientSchema {
+public abstract class PatientSchema implements Serializable {
     private String nom;
     private String prenom;
     private LocalDate dateDeNaissance;
     private String lieuDeNaissance;
     private String adresse;
 
-    public PatientSchema(String nom, String prenom, LocalDate dateDeNaissance, String adresse) {
+    public PatientSchema(String nom, String prenom, LocalDate dateDeNaissance,String lieuDeNaissance,  String adresse) {
         this.nom = nom;
         this.prenom = prenom;
         this.dateDeNaissance = dateDeNaissance;
+        this.lieuDeNaissance = lieuDeNaissance;
         this.adresse = adresse;
     }
     public PatientSchema(String nom , String preonm, LocalDate dateDeNaissance){

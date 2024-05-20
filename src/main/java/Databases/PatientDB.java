@@ -5,7 +5,7 @@ import Models.patient.PatientSchema;
 import java.time.LocalDate;
 
 public interface PatientDB {
-    public AdultSchema createAdult(String nom, String prenom, LocalDate dateDeNaissance, String adresse, String diplome, String profession);
+    public AdultSchema createAdult(String nom, String prenom, LocalDate dateDeNaissance,String lieuDeNaissance, String adresse, String diplome, String profession);
 
     public AdultSchema createAdult(AdultSchema adult);
 
@@ -16,7 +16,7 @@ public interface PatientDB {
 
     public AdultSchema updateAdult(AdultSchema adult);
 
-    public PatientSchema createEnfant(String nom, String prenom, LocalDate dateDeNaissance, String adresse, String classeEtude, String[] numParents);
+    public PatientSchema createEnfant(String nom, String prenom, LocalDate dateDeNaissance,String lieuDeNaissance, String adresse, String classeEtude, String[] numParents);
 
     public PatientSchema createEnfant(PatientSchema enfant);
     public PatientSchema findPatient(String nom, String prenom);

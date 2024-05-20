@@ -165,7 +165,6 @@ public class RdvController  implements HelloController.InitializeData{
             int age = Integer.parseInt(textAge);
             int duree = Integer.parseInt(textDuree);
             //search for patient
-            System.out.println(duree);
             PatientSchema patient = HelloApplication.patientModel.findPatient(nom, prenom);
 
            switch (selectedRdvType){

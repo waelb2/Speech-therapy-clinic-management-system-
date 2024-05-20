@@ -173,7 +173,7 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Text>
-                        <DatePicker fx:id="datePicker" layoutX="61.0" layoutY="159.0" style="-fx-background-color: #fff; -fx-border-color: #1588ea;" stylesheets="@../../../datePicker.css" />
+                        <DatePicker fx:id="datePicker" layoutX="61.0" layoutY="159.0" promptText="Date du rendez-vous" style="-fx-background-color: #fff; -fx-border-color: #1588ea;" stylesheets="@../../../datePicker.css" />
                         <ComboBox fx:id="hourPicker" layoutX="254.0" layoutY="158.0" prefHeight="20.0" prefWidth="74.0" promptText="00h" style="-fx-background-color: #fff; -fx-border-color: #1588ea;" />
                         <ComboBox fx:id="minPicker" layoutX="332.0" layoutY="158.0" prefHeight="26.0" prefWidth="74.0" promptText="00m" style="-fx-background-color: #fff; -fx-border-color: #1588ea;" />
                         <RadioButton fx:id="radioConsultaion" layoutX="66.0" layoutY="290.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Consultation" textFill="#1588ea">
