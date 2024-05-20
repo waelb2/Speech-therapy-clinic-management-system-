@@ -3,18 +3,19 @@ import Databases.PatientDB;
 import com.example.tp_poo.HelloApplication;
 
 import java.io.*;
+import java.util.Set;
 import java.util.TreeMap;
 import java.time.LocalDate;
 
-public class PatientModel implements PatientDB {
+public class PatientModel implements PatientDB, Serializable{
     TreeMap<String, PatientSchema> patients= new TreeMap<>();
 
     public PatientModel(TreeMap<String, PatientSchema> patients) {
         this.patients = patients;
     }
     @Override
-    public  AdultSchema createAdult(String nom, String prenom, LocalDate dateDeNaissance, String adresse, String diplome, String profession){
-        AdultSchema adult = new AdultSchema(nom, prenom, dateDeNaissance, adresse, diplome, profession);
+    public  AdultSchema createAdult(String nom, String prenom, LocalDate dateDeNaissance,String lieuDeNaissance, String adresse, String diplome, String profession){
+        AdultSchema adult = new AdultSchema(nom, prenom, dateDeNaissance, lieuDeNaissance, adresse, diplome, profession);
         patients.put(nom+"_"+prenom, adult);
         return adult;
     }
@@ -36,8 +37,8 @@ public class PatientModel implements PatientDB {
         return (AdultSchema) patients.put(adult.getNom()+"_"+adult.getPrenom(), adult);
     }
     @Override
-    public PatientSchema createEnfant(String nom, String prenom, LocalDate dateDeNaissance, String adresse, String classeEtude, String[] numParents){
-        EnfantSchema enfant = new EnfantSchema(nom, prenom, dateDeNaissance, adresse, classeEtude, numParents);
+    public PatientSchema createEnfant(String nom, String prenom, LocalDate dateDeNaissance,String lieuDeNaissance, String adresse, String classeEtude, String[] numParents){
+        EnfantSchema enfant = new EnfantSchema(nom, prenom, dateDeNaissance, lieuDeNaissance, adresse, classeEtude, numParents);
         patients.put(nom+"_"+prenom, enfant);
         return enfant;
     }
