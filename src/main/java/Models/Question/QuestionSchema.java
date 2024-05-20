@@ -1,20 +1,22 @@
 package Models.Question;
 
-public class QuestionSchema {
-    private String enoncé;
+import java.io.Serializable;
+
+public class QuestionSchema implements Serializable {
+    private String enonce;
     private int score;
 
-    public QuestionSchema(String enoncé, int score) {
-        this.enoncé = enoncé;
+    public QuestionSchema(String enonce, int score) {
+        this.enonce = enonce;
         this.score = score;
     }
 
     public String getEnoncé() {
-        return enoncé;
+        return enonce;
     }
 
-    public void setEnoncé(String enoncé) {
-        this.enoncé = enoncé;
+    public void setEnonce(String enonce) {
+        this.enonce = enonce;
     }
 
     public int getScore() {

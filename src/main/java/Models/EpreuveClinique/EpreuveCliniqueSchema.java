@@ -2,7 +2,9 @@ package Models.EpreuveClinique;
 
 import Models.Test.TestSchema;
 
-public class EpreuveCliniqueSchema {
+import java.io.Serializable;
+
+public class EpreuveCliniqueSchema  implements Serializable {
     private String observation;
     private TestSchema test;
 }

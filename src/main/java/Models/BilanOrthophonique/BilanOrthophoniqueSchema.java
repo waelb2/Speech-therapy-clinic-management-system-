@@ -6,9 +6,10 @@ import Models.Anamnese.AnamneseSchema;
 import Models.EpreuveClinique.EpreuveCliniqueSchema;
 import Models.Trouble.TroubleSchema;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BilanOrthophoniqueSchema {
+public class BilanOrthophoniqueSchema implements Serializable {
     private AnamneseSchema anamnese;
     private ArrayList<EpreuveCliniqueSchema> epreuvesCliniques;
     private ArrayList<TroubleSchema> diagnostiques;

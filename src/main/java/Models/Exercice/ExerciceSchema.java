@@ -1,6 +1,8 @@
 package Models.Exercice;
 
-public class ExerciceSchema {
+import java.io.Serializable;
+
+public class ExerciceSchema implements Serializable {
     private String materielRequis;
     private int score;
 

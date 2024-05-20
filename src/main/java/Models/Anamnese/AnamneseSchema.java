@@ -1,10 +1,10 @@
 package Models.Anamnese;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import Exceptions.ElementNotFoundException;
 
-import java.util.ArrayList;
-
-public class AnamneseSchema {
+public class AnamneseSchema implements Serializable {
     private ArrayList<AnamneseQuestion> questionsAnamnese;
 
     public AnamneseSchema(ArrayList<AnamneseQuestion> questionsAnamnese) {
@@ -15,12 +15,12 @@ public class AnamneseSchema {
     }
 
     public void addQuestion(AnamneseQuestion AQ) {
-       this.questionsAnamnese.add(AQ);
+        this.questionsAnamnese.add(AQ);
     }
 
     public void delQuestion(AnamneseQuestion AQ) throws ElementNotFoundException {
-       if(!this.questionsAnamnese.remove(AQ)) {
-           throw new ElementNotFoundException() ;
-       }
+        if (!this.questionsAnamnese.remove(AQ)) {
+            throw new ElementNotFoundException();
+        }
     }
 }
