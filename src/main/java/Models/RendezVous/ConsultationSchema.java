@@ -5,16 +5,24 @@ import Models.patient.PatientSchema;
 import java.time.LocalDate;
 
 public class ConsultationSchema  extends  RendezVousSchema{
-   private PatientSchema patient ;
-   public ConsultationSchema(LocalDate date, String heure, PatientSchema newPatient, String observation) {
+   private String nom;
+   private String prenom;
+   private int age;
+   public ConsultationSchema(LocalDate date, String heure ,String nom, String prenom,int age, String observation) {
        super(date, heure,  observation );
-       this.patient = newPatient;
+       this.age= age;
+       this.nom = nom;
+       this.prenom = prenom;
    }
 
-   public PatientSchema getPatient() {
-       return patient;
+
+   public String getNom() {
+       return nom;
    }
-   public void setPatient(PatientSchema patient) {
-       this.patient = patient;
+   public String getPrenom() {
+       return prenom;
    }
+    public int getAge() {
+         return age;
+    }
 }
