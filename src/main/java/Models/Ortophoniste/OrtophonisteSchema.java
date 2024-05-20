@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class OrtophonisteSchema implements Serializable {
     private String nom ;
     private String prenom;
-    private  String email;
+    private String email;
     private String motDePasse ;
     private String adresse ;
     private String numTelephone ;
