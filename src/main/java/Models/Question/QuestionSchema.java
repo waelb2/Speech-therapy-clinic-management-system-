@@ -1,6 +1,8 @@
 package Models.Question;
 
-public class QuestionSchema {
+import java.io.Serializable;
+
+public class QuestionSchema implements Serializable {
     private String enonce;
     private int score;
 

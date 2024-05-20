@@ -3,7 +3,12 @@ package Controllers.rdvControllers;
 import Exceptions.AllInputsShouldBeProvidedException;
 import Exceptions.PatientDoesNotExistException;
 import Exceptions.PatientHasConsultationException;
+import Models.BilanOrthophonique.BilanOrthophoniqueSchema;
+import Models.DossierPatient.DossierPatientSchema;
+import Models.FicheDeSuivi.FicheDeSuiviSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.RendezVous.ConsultationSchema;
+import Models.RendezVous.RendezVousSchema;
 import Models.patient.AdultSchema;
 import Models.patient.EnfantSchema;
 import Models.patient.PatientSchema;
@@ -17,6 +22,9 @@ import javafx.scene.input.MouseEvent;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.stream.IntStream;
 
 public class ConsultationController implements  HelloController.InitializeDataWithObject {
@@ -176,6 +184,30 @@ public class ConsultationController implements  HelloController.InitializeDataWi
                AdultSchema adult = new AdultSchema(nom, prenom, dateDeNaissance, lieuDeNaissance, adresse, diplomeOuClasse, profession);
                HelloApplication.patientModel.createAdult(adult);
            }
+
+           // create dossierPatient
+            int dossierId = HelloApplication.patientModel.countPatients();
+            TreeSet<RendezVousSchema> rdvs = new TreeSet<>();
+            ArrayList < BilanOrthophoniqueSchema> bos = new ArrayList<>();
+            ArrayList < FicheDeSuiviSchema> fichesSuivis = new ArrayList<>();
+            DossierPatientSchema newDossierPatient = new DossierPatientSchema(dossierId,rdvs,bos,fichesSuivis);
+            String orthoEmail = HelloApplication.currentUser.getEmail();
+
+            // creating new consultation
+            ConsultationSchema newConsultation  = new ConsultationSchema(dateRdv,heure,nom,prenom,age,observation);
+
+            //adding consultation to dossierPatient
+            newDossierPatient.addRdv(newConsultation);
+
+            // creating patient folder (dossier patient)
+            boolean created = DossierPatientSchema.saveDossierPatient(newDossierPatient,orthoEmail,nom, prenom);
+            if(created){
+                Popups.showSuccessMessage("Created", "Consultation ajoutée avec succès");
+            }else {
+                Popups.showErrorMessage("Erreur dans la création du consultation");
+            }
+            // redirect to dashboard
+            HelloController.redirectPage(event, "dashboard.fxml", "Dashboard");
         }
         catch (AllInputsShouldBeProvidedException e){
             Popups.showErrorMessage("Error", e.getMessage());

@@ -77,7 +77,7 @@ public class SignupFormController {
             File userFolder  = new File(newUserPath);
             userFolder.mkdirs();
             // creating the patients folder
-            String patientsPath= HelloApplication.orthophonistesDir + "/" + email + "/patients";
+            String patientsPath= HelloApplication.orthophonistesDir + "/" + email + "/dossiersPatients";
             File patientsFolder  = new File(patientsPath);
             patientsFolder.mkdirs();
             // redirecting the doctor to his dashboard

@@ -1,6 +1,8 @@
 package Models.RendezVous;
 
-public enum TypeSuivi {
+import java.io.Serializable;
+
+public enum TypeSuivi  implements Serializable {
     ENLIGNE,
     PRESENTIEL
 }

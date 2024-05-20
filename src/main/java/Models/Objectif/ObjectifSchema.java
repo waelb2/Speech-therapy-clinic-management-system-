@@ -1,6 +1,8 @@
 package Models.Objectif;
 
-public class ObjectifSchema {
+import java.io.Serializable;
+
+public class ObjectifSchema implements Serializable {
     private String nom;
     private TermeEnum duree;
     private int note;

@@ -1,4 +1,6 @@
 package Models.Anamnese;
 
-public class AnamneseSchema {
+import java.io.Serializable;
+
+public class AnamneseSchema implements Serializable {
 }

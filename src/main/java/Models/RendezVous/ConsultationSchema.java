@@ -2,9 +2,10 @@ package Models.RendezVous;
 
 import Models.patient.PatientSchema;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class ConsultationSchema  extends  RendezVousSchema{
+public class ConsultationSchema  extends  RendezVousSchema implements Serializable {
    private String nom;
    private String prenom;
    private int age;

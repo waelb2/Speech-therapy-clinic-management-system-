@@ -88,4 +88,7 @@ public class PatientModel implements PatientDB, Serializable{
             System.out.println(e.getMessage());
         }
     }
+    public int countPatients(){
+        return this.patients.size();
+    }
 }

@@ -1,9 +1,10 @@
 package Models.RendezVous;
 import Models.RendezVous.TypeSuivi;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class SuiviSchema extends  RendezVousSchema{
+public class SuiviSchema extends  RendezVousSchema implements Serializable {
    private  int numDossier ;
    private TypeSuivi typeSuivi ;
 
