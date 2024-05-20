@@ -6,7 +6,7 @@ public abstract class RendezVousSchema {
     private LocalDate date;
     private String heure;
     private String observation ;
-
+// TODO : duree ou heure de la fin du rendezVous ??
     public RendezVousSchema(LocalDate date, String heure,String observation){
         this.date = date;
         this.heure = heure;
