@@ -218,7 +218,7 @@ public class ConsultationController implements  HelloController.InitializeDataWi
             if(created){
                 Popups.showSuccessMessage("Created", "Consultation ajoutée avec succès");
             }else {
-                Popups.showErrorMessage("Erreur dans la création du consultation");
+                Popups.showErrorMessage("Erreur dans la création de la consultation");
             }
 
             // redirect to dashboard

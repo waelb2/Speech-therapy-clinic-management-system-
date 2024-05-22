@@ -1,4 +1,4 @@
-package Models.Exercice;
+package Models.Test.Exercice;
 
 public class ExerciceModel {
 }

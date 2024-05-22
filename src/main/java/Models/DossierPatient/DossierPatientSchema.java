@@ -10,13 +10,17 @@ import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.function.ToDoubleBiFunction;
 
+
 public class DossierPatientSchema implements Serializable {
     private int id;
+
     private TreeSet<RendezVousSchema> rendezVousPatient; //TODO: definir un comparateur pour rendezVous afin de trier les rendez vous de chaque patient et ainsi que les rendezVous du medecin (le tri se fera temporellement)
     private ArrayList<BilanOrthophoniqueSchema> bO;
     private  ArrayList<FicheDeSuiviSchema> fichesDesSuivis;
 
+
     public DossierPatientSchema(int id, TreeSet<RendezVousSchema> rendezVousPatient, ArrayList<BilanOrthophoniqueSchema> bO, ArrayList<FicheDeSuiviSchema> fichesDesSuivis) {
+
         this.rendezVousPatient = rendezVousPatient;
         this.bO = bO;
         this.fichesDesSuivis = fichesDesSuivis;
@@ -25,6 +29,7 @@ public class DossierPatientSchema implements Serializable {
 
     public DossierPatientSchema() {
     }
+
 
 
     public void addRdv(RendezVousSchema newRdv){
@@ -90,4 +95,5 @@ public class DossierPatientSchema implements Serializable {
             return false;
         }
     }
+
 }

@@ -1,4 +1,4 @@
-package Models.Exercice;
+package Models.Test.Exercice;
 
 import java.io.Serializable;
 
