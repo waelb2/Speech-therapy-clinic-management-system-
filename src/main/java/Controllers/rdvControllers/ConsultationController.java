@@ -80,6 +80,8 @@ public class ConsultationController implements  HelloController.InitializeDataWi
 
     @FXML
     private TextField tf_tele_second;
+    @FXML
+    private  TextField tf_duree;
 
 
     @FXML
@@ -168,6 +170,7 @@ public class ConsultationController implements  HelloController.InitializeDataWi
         String diplomeOuClasse = tf_class_diplome.getText();
         String profession = tf_profession.getText();
         String[] numParents = {tf_tele_one.getText(), tf_tele_second.getText()};
+        String duree = "";
 
 
 
@@ -178,12 +181,16 @@ public class ConsultationController implements  HelloController.InitializeDataWi
            }
 
            if(age < 18){
+               duree = "90";
                EnfantSchema enfant = new EnfantSchema(nom, prenom, dateDeNaissance, lieuDeNaissance, adresse, diplomeOuClasse, numParents);
                HelloApplication.patientModel.createEnfant(enfant);
            }else {
+               duree = "150";
                AdultSchema adult = new AdultSchema(nom, prenom, dateDeNaissance, lieuDeNaissance, adresse, diplomeOuClasse, profession);
                HelloApplication.patientModel.createAdult(adult);
            }
+
+            HelloApplication.patientModel.savePatients();
 
            // create dossierPatient
             int dossierId = HelloApplication.patientModel.countPatients();
@@ -194,18 +201,26 @@ public class ConsultationController implements  HelloController.InitializeDataWi
             String orthoEmail = HelloApplication.currentUser.getEmail();
 
             // creating new consultation
-            ConsultationSchema newConsultation  = new ConsultationSchema(dateRdv,heure,nom,prenom,age,observation);
+            ConsultationSchema newConsultation  = new ConsultationSchema(dateRdv,heure, duree,nom,prenom,age,observation);
 
-            //adding consultation to dossierPatient
+            //adding consultation to dossierPatient, rdvs
             newDossierPatient.addRdv(newConsultation);
+            HelloApplication.rendezVousModel.createRendezVous(newConsultation);
+            HelloApplication.rendezVousModel.saveRendezVous();
 
-            // creating patient folder (dossier patient)
+
+            // creating patient file (dossier patient)
             boolean created = DossierPatientSchema.saveDossierPatient(newDossierPatient,orthoEmail,nom, prenom);
+
+            // adding dossierPatient to dossierPatients file
+            HelloApplication.dossierPatientModel.createDossierPatient(newDossierPatient);
+
             if(created){
                 Popups.showSuccessMessage("Created", "Consultation ajoutée avec succès");
             }else {
                 Popups.showErrorMessage("Erreur dans la création du consultation");
             }
+
             // redirect to dashboard
             HelloController.redirectPage(event, "dashboard.fxml", "Dashboard");
         }

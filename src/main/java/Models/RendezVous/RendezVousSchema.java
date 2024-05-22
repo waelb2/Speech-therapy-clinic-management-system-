@@ -7,10 +7,12 @@ public abstract class RendezVousSchema implements Comparable<RendezVousSchema> ,
     private LocalDate date;
     private String heure;
     private String observation ;
+    private String duree;
 
-    public RendezVousSchema(LocalDate date, String heure,String observation){
+    public RendezVousSchema(LocalDate date, String heure,String observation, String duree){
         this.date = date;
         this.heure = heure;
+        this.duree = duree;
         this.observation = observation;
     }
     @Override
@@ -24,10 +26,14 @@ public abstract class RendezVousSchema implements Comparable<RendezVousSchema> ,
     public String getHeure() {
         return heure;
     }
+    public  String getDuree(){
+        return duree;
+    }
     public void setDate(LocalDate date) {
         this.date = date;
     }
     public void setHeure(String heure) {
         this.heure = heure;
     }
+    public void setDuree(String duree) {this.duree=duree;}
 }

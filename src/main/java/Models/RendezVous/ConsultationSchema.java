@@ -9,8 +9,8 @@ public class ConsultationSchema  extends  RendezVousSchema implements Serializab
    private String nom;
    private String prenom;
    private int age;
-   public ConsultationSchema(LocalDate date, String heure ,String nom, String prenom,int age, String observation) {
-       super(date, heure,  observation );
+   public ConsultationSchema(LocalDate date, String heure,String duree ,String nom, String prenom,int age, String observation) {
+       super(date, heure,  observation, duree );
        this.age= age;
        this.nom = nom;
        this.prenom = prenom;

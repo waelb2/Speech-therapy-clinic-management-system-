@@ -76,12 +76,30 @@ public class SignupFormController {
             String newUserPath = HelloApplication.orthophonistesDir + "/" + email;
             File userFolder  = new File(newUserPath);
             userFolder.mkdirs();
+
             // creating the patients folder
-            String patientsPath= HelloApplication.orthophonistesDir + "/" + email + "/dossiersPatients";
+            String dossiersPatientsPath= newUserPath + "/dossiersPatients";
+            File dossiersPatientsFolder  = new File(dossiersPatientsPath);
+            dossiersPatientsFolder.mkdirs();
+
+            // creating the patients folder
+            String patientsPath = newUserPath + "/MesPatients";
             File patientsFolder  = new File(patientsPath);
             patientsFolder.mkdirs();
+
+            // creating the rdvs  folder
+            String RdvPath= newUserPath + "/MesRdvs";
+            File rdvFolder  = new File(RdvPath);
+            rdvFolder.mkdirs();
+
+            // creating the rdvs  folder
+            String  testPath = newUserPath + "/MesTestesETAnamneses";
+            File testFolder  = new File(testPath);
+            testFolder.mkdirs();
+
             // redirecting the doctor to his dashboard
             HelloController.redirectPage(event, "dashboard.fxml", "Dashboard");
+
         }catch (AllInputsShouldBeProvidedException | EmailExistsException  e ){
             System.out.println(e.getMessage());
             Popups.showSuccessMessage("Sign-up error", e.getMessage());

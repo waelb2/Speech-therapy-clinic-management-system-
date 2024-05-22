@@ -1,5 +1,6 @@
 package Controllers.userControllers;
 
+import Models.DossierPatient.DossierPatientSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
 import Models.patient.PatientModel;
 import Utils.Popups;
@@ -14,6 +15,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Map;
+
 import Models.Ortophoniste.OrtophonisteModel;
 import Exceptions.*;
 import Controllers.dashboardControllers.DashboardController;
@@ -61,8 +64,15 @@ public class LoginFormController {
 
             // load patients
             HelloApplication.patientModel.loadPatients();
-            HelloController.redirectPage(event, "dashboard.fxml", "Dashboard");
 
+            //load rendez-vous
+            HelloApplication.rendezVousModel.loadRendezVous();
+
+            //load dossiers patients
+            HelloApplication.dossierPatientModel.loadDossierPatient();
+
+
+            HelloController.redirectPage(event, "dashboard.fxml", "Dashboard");
         }catch (UserNotFoundException | EmailNotProvidedException| PasswordNotProvidedException | WrongPasswordException e){
             System.out.println(e.getMessage());
             Popups.showErrorMessage("Login error", e.getMessage());

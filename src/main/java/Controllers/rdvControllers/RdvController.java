@@ -4,7 +4,9 @@ import Exceptions.AllInputsShouldBeProvidedException;
 import Exceptions.PasswordNotProvidedException;
 import Exceptions.PatientDoesNotExistException;
 import Exceptions.PatientHasConsultationException;
+import Models.DossierPatient.DossierPatientSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.RendezVous.RendezVousSchema;
 import Models.patient.PatientSchema;
 import Utils.Popups;
 import com.example.tp_poo.HelloApplication;
@@ -22,6 +24,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.stream.IntStream;
 
 public class RdvController  implements HelloController.InitializeData{
@@ -158,7 +162,7 @@ public class RdvController  implements HelloController.InitializeData{
             String selectedRdvType = selectedRadioButton.getText();
             String textDuree = tf_duree.getText();
 
-            if(nom.isEmpty() || prenom.isEmpty() || textAge.isEmpty()  || date == null){
+            if(nom.isEmpty() || prenom.isEmpty() || textAge.isEmpty()  || date == null||  tf_duree.getText().isEmpty()){
                 throw new AllInputsShouldBeProvidedException();
             }
 
@@ -167,25 +171,26 @@ public class RdvController  implements HelloController.InitializeData{
             //search for patient
             PatientSchema patient = HelloApplication.patientModel.findPatient(nom, prenom);
 
+            HelloController.ConsultationObject consultationObject = new HelloController.ConsultationObject(nom, prenom, textAge, date, hourPicker.getValue().toString(), minPicker.getValue().toString());
            switch (selectedRdvType){
                 case "Consultation":
                     if(!(patient == null)){
                         throw new PatientHasConsultationException();
                     }
-                    HelloController.ConsultationObject consultationObject = new HelloController.ConsultationObject(nom, prenom, textAge, date, hourPicker.getValue().toString(), minPicker.getValue().toString());
                     HelloController.redirectWithData(event, consultationObject, "consultation.fxml", "Consultation");
                     break;
                 case "Suivi":
                     if(patient == null){
                         throw new PatientDoesNotExistException(selectedRdvType.toLowerCase());
                     }
-                    System.out.println("Suivi");
+                    HelloController.redirectWithData(event ,consultationObject , "suivi.fxml", "Suivi");
                     break;
                 case "Atelier":
                     if(patient == null){
                         throw new PatientDoesNotExistException(selectedRdvType.toLowerCase());
                     }
-                    System.out.println("Atelier");
+                    HelloController.redirectWithData(event ,consultationObject , "atelier.fxml", "Atelier");
+                    //1h
                     break;
             }
 

@@ -1,7 +1,11 @@
 package com.example.tp_poo;
 
+import Models.DossierPatient.DossierPatientModel;
+import Models.DossierPatient.DossierPatientSchema;
 import Models.Ortophoniste.OrtophonisteModel;
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.RendezVous.RendezVousModel;
+import Models.RendezVous.RendezVousSchema;
 import Models.patient.PatientModel;
 import Models.patient.PatientSchema;
 import javafx.application.Application;
@@ -13,13 +17,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class HelloApplication extends Application {
 
-    private static TreeMap<String , OrtophonisteSchema> users  = new TreeMap<>();
+    // init needed data
+    public static TreeMap<String , OrtophonisteSchema> users  = new TreeMap<>();
     public static TreeMap<String, PatientSchema> patients = new TreeMap<>();
+    public static TreeSet<RendezVousSchema> rendezVouss = new TreeSet<>();
+    public static TreeMap<Integer, DossierPatientSchema> dossiersPatients = new TreeMap<>();
     public static OrtophonisteModel ortophonisteModel = new  OrtophonisteModel(users);
     public static PatientModel patientModel = new PatientModel(patients);
+    public static RendezVousModel rendezVousModel = new RendezVousModel(rendezVouss);
+    public static DossierPatientModel dossierPatientModel = new DossierPatientModel(dossiersPatients);
     public static String  orthophonistesDir = "./data/orthophonistes";
     public static String appUsersDir = "./data/app_users";
     public static String currentUserDir ;
@@ -47,7 +57,10 @@ public class HelloApplication extends Application {
         ortophonisteModel.saveOrthophonistes();
         //save patients file
         patientModel.savePatients();
-
+        //save rendez-vous file
+        rendezVousModel.saveRendezVous();
+        // save dossierPatients file
+        dossierPatientModel.saveDossierPatient();
         super.stop();
     }
     public static void main(String[] args) {

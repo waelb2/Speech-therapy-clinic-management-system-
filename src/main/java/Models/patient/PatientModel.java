@@ -52,6 +52,17 @@ public class PatientModel implements PatientDB, Serializable{
         return patients.get(nom+"_"+prenom);
     }
     @Override
+    public PatientSchema[] getAllPatients(){
+        Set<String> keys = patients.keySet();
+        PatientSchema[] patientsArray = new PatientSchema[keys.size()];
+        int i = 0;
+        for (String key : keys) {
+            patientsArray[i] = patients.get(key);
+            i++;
+        }
+        return patientsArray;
+    }
+    @Override
     public PatientSchema deleteEnfant(String nom, String prenom){
         return patients.remove(nom+"_"+prenom);
     }
@@ -65,7 +76,7 @@ public class PatientModel implements PatientDB, Serializable{
     }
     public void loadPatients() throws IOException, ClassNotFoundException {
         // Check if the file exists
-        File file = new File(HelloApplication.currentUserDir + "/patients.dat");
+        File file = new File(HelloApplication.currentUserDir + "/MesPatients/patients.dat");
         if (file.exists()) {
             try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
                 patients = (TreeMap<String, PatientSchema>) objectInputStream.readObject();
@@ -82,7 +93,7 @@ public class PatientModel implements PatientDB, Serializable{
 
     public void savePatients() throws  IOException {
         // save patients to patients.dat
-        try (ObjectOutputStream objectOutputStream= new ObjectOutputStream(new FileOutputStream(HelloApplication.currentUserDir + "/patients.dat"))) {
+        try (ObjectOutputStream objectOutputStream= new ObjectOutputStream(new FileOutputStream(HelloApplication.currentUserDir + "/MesPatients/patients.dat"))) {
             objectOutputStream.writeObject(patients);
         } catch (IOException e) {
             System.out.println(e.getMessage());

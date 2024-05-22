@@ -8,8 +8,8 @@ public class SuiviSchema extends  RendezVousSchema implements Serializable {
    private  int numDossier ;
    private TypeSuivi typeSuivi ;
 
-   public SuiviSchema(LocalDate date, String heure  , int numDossier, TypeSuivi typeSuivi, String observation){
-       super(date, heure, observation );
+   public SuiviSchema(LocalDate date, String heure,String duree  , int numDossier, TypeSuivi typeSuivi, String observation){
+       super(date, heure, observation, duree );
        this.numDossier = numDossier;
        this.typeSuivi = typeSuivi;
    }
