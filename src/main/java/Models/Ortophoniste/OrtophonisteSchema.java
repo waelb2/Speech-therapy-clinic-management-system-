@@ -1,6 +1,10 @@
 package Models.Ortophoniste;
 
+import Models.Anamnese.AnamneseSchema;
+import Models.Test.TestSchema;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class OrtophonisteSchema implements Serializable {
     private String nom ;
@@ -9,6 +13,8 @@ public class OrtophonisteSchema implements Serializable {
     private String motDePasse ;
     private String adresse ;
     private String numTelephone ;
+    private ArrayList<TestSchema> mesTests;
+    private ArrayList<AnamneseSchema> mesAnamneses;
 
     public OrtophonisteSchema(String nom, String prenom, String email, String motDePasse, String adresse, String numTelephone) {
         this.nom = nom;
@@ -61,5 +67,21 @@ public class OrtophonisteSchema implements Serializable {
 
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
+    }
+
+    public ArrayList<TestSchema> getMesTests() {
+        return mesTests;
+    }
+
+    public void setMesTests(ArrayList<TestSchema> mesTests) {
+        this.mesTests = mesTests;
+    }
+
+    public ArrayList<AnamneseSchema> getMesAnamneses() {
+        return mesAnamneses;
+    }
+
+    public void setMesAnamneses(ArrayList<AnamneseSchema> mesAnamneses) {
+        this.mesAnamneses = mesAnamneses;
     }
 }

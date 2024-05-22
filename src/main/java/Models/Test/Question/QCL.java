@@ -1,4 +1,4 @@
-package Models.Question;
+package Models.Test.Question;
 
 public class QCL extends QuestionSchema{
     private String reponseType;

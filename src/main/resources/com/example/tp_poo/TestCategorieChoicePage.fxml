@@ -142,36 +142,27 @@
                   </Label>
                </children>
             </Pane>
-            <AnchorPane layoutX="172.0" prefHeight="600.0" prefWidth="626.0">
+            <AnchorPane layoutX="172.0" layoutY="-3.0" prefHeight="600.0" prefWidth="626.0">
                <children>
-                  <Text fill="#1588ea" layoutX="-2.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Testes et anamnèses" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="50.0">
+                  <Text fill="#1588ea" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout d'un nouveau test" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="75.0">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Text>
-                  <Button layoutX="67.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleMesTestsClick" prefHeight="182.0" prefWidth="197.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="mes tests" textFill="WHITE">
+                  <Button layoutX="66.0" layoutY="209.0" mnemonicParsing="false" prefHeight="182.0" prefWidth="197.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Test de questions" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="22.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="366.0" layoutY="142.0" mnemonicParsing="false" prefHeight="182.0" prefWidth="197.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="mes anamneses" textFill="WHITE">
+                  <Button layoutX="378.0" layoutY="209.0" mnemonicParsing="false" prefHeight="182.0" prefWidth="197.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Test d'exercices" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="67.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleAjouterTestClick" prefHeight="182.0" prefWidth="197.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Ajouter un test" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="366.0" layoutY="354.0" mnemonicParsing="false" prefHeight="182.0" prefWidth="197.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Ajouter un Anamnése" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
+      <Button mnemonicParsing="false" text="Button" />
    </children>
 </HBox>

@@ -1,4 +1,4 @@
-package Models.Question;
+package Models.Test.Question;
 
 public class QCU extends QuestionSchema {
 private String reponse;

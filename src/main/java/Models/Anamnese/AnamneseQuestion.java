@@ -3,8 +3,8 @@ package Models.Anamnese;
 public abstract class AnamneseQuestion {
     private String enonce;
 
-    public AnamneseQuestion(String questionText) {
-        this.enonce = questionText;
+    public AnamneseQuestion(String enonce) {
+        this.enonce = enonce;
     }
 
     public String getEnonce() {

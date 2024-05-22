@@ -1,6 +1,8 @@
 package Controllers.testsAnamsControllers;
 
+import Models.Anamnese.AnamneseSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.Test.TestSchema;
 import com.example.tp_poo.HelloApplication;
 import com.example.tp_poo.HelloController;
 import javafx.event.ActionEvent;
@@ -8,20 +10,28 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
+import java.util.ArrayList;
+
 public class TestsAnamsControllers  implements HelloController.InitializeData {
     private OrtophonisteSchema orthophoniste ;
+    private ArrayList<TestSchema> mesTests;
+    private ArrayList<AnamneseSchema> mesAnamneses;
     @FXML
     Label orthoField;
     private  String orthoNom  ;
     private  String orthoPrenom  ;
 
     @FXML
+
     @Override
     public  void initialize(){
         this.orthophoniste = HelloApplication.currentUser;
         this.orthoNom  = orthophoniste.getNom();
         this.orthoPrenom = orthophoniste.getPrenom();
+        this.mesTests = orthophoniste.getMesTests();
+        this.mesAnamneses = orthophoniste.getMesAnamneses();
         orthoField.setText(" " + orthoNom + " " + orthoPrenom);
+
     }
     public void handlePatientsClick(ActionEvent evet) {
         try{
@@ -64,5 +74,21 @@ public class TestsAnamsControllers  implements HelloController.InitializeData {
         }catch (Exception e){
             e.getMessage();
         }}
+
+    public void handleAjouterTestClick(ActionEvent event) {
+        try{
+            HelloController.redirectPage(event , "TestCategorieChoicePage.fxml", "Ajouter un test");
+        }catch (Exception e){
+            e.getMessage();
+        }
+    }
+
+    public void handleMesTestsClick(ActionEvent event) {
+        try{
+            HelloController.redirectPage(event , "mesTests.fxml", "Ajouter un test");
+        }catch (Exception e){
+            e.getMessage();
+        }
+    }
 
 }
