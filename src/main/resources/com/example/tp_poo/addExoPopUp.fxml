@@ -5,13 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TestControllers.QuestionLibreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.testsAnamsControllers.testCreationControllers.addExoController">
    <children>
-      <TextField fx:id="questionField" layoutX="25.0" layoutY="50.0" prefHeight="26.0" prefWidth="250.0" promptText="Entrer l'énoncé de la question" style="-fx-border-color: #1588ea;" />
-      <Button layoutX="101.0" layoutY="99.0" onAction="#submitQuestionLibre" style="-fx-background-color: #1588ea;" text="Enregistrer" textFill="WHITE">
+      <TextField fx:id="tf_requiredMaterial" layoutX="25.0" layoutY="59.0" prefHeight="26.0" prefWidth="250.0" promptText="Materiel requis pour l'exercice" style="-fx-border-color: #1588ea;" />
+      <Button fx:id="saveExo" layoutX="101.0" layoutY="99.0" onAction="#submitExo" style="-fx-background-color: #1588ea;" text="Enregistrer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <TextField fx:id="tf_exerciceName" layoutX="25.0" layoutY="14.0" prefHeight="26.0" prefWidth="250.0" promptText="Nom de l'exercice" style="-fx-border-color: #1588ea;" />
    </children>
 </AnchorPane>

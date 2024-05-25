@@ -3,6 +3,7 @@ package com.example.tp_poo;
 import Controllers.dashboardControllers.DashboardController;
 import Controllers.patientsControllers.DossiersPatientsController;
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.Test.Exercice.ExerciceSchema;
 import Models.Test.Question.QuestionSchema;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -60,6 +61,9 @@ public class HelloController {
     }
     public interface InitializeDataWithQuestions{
         void initializeWithQuestions(ArrayList<QuestionSchema> questions);
+    }
+    public interface InitializeDataWithExercices{
+        void initializeWithExercices(ArrayList<ExerciceSchema> exercices);
     }
     //dashboardController.initilize(orthophoniste);
      public static class ConsultationObject {

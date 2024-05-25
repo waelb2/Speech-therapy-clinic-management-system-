@@ -162,12 +162,12 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Text>
-                        <Button fx:id="createRdv1" layoutX="138.0" layoutY="227.0" mnemonicParsing="false" onAction="#addExercice" prefHeight="48.0" prefWidth="164.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textFill="WHITE">
+                        <Button fx:id="createRdv1" layoutX="150.0" layoutY="178.0" mnemonicParsing="false" onAction="#addExercice" prefHeight="48.0" prefWidth="164.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                            <graphic>
-                              <Label prefHeight="42.0" prefWidth="173.0" style="-fx-cursor: hand;" text="Ajouter un exercice" textFill="WHITE">
+                              <Label fx:id="addExo" prefHeight="42.0" prefWidth="173.0" style="-fx-cursor: hand;" text="Ajouter un exercice" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -181,7 +181,7 @@
                               </Label>
                            </graphic>
                         </Button>
-                        <Button layoutX="284.0" layoutY="326.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="154.0" style="-fx-background-color: #1588ea;" text="Enregistrer le test" textFill="WHITE">
+                        <Button fx:id="saveTest" layoutX="285.0" layoutY="285.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="154.0" style="-fx-background-color: #1588ea;" text="Enregistrer le test" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>

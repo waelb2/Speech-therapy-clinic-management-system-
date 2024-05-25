@@ -7,6 +7,9 @@ public class ExerciceSchema implements Serializable {
     private String materielRequis;
     private int score;
 
+    public ExerciceSchema() {
+    }
+
     public ExerciceSchema(String nom) {
         this.nom = nom;
     }
@@ -14,6 +17,14 @@ public class ExerciceSchema implements Serializable {
     public ExerciceSchema(String nom, String materielRequis) {
         this.nom = nom;
         this.materielRequis = materielRequis;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
 

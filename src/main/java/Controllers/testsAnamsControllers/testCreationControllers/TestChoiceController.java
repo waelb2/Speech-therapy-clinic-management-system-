@@ -92,5 +92,13 @@ public class TestChoiceController implements HelloController.InitializeData {
             }
         }
 
+    public void handleExoTestCreationClick(ActionEvent event) {
+        try {
+            HelloController.redirectPage(event, "ExoTestCreation.fxml", "Test de questions");
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
     }
 

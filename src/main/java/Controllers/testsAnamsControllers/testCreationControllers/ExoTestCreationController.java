@@ -115,16 +115,7 @@ public class ExoTestCreationController implements HelloController.InitializeData
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
             Parent root = fxmlLoader.load();
 
-            if (questionType.equals("QCM")) {
-                QCMController controller = fxmlLoader.getController();
-                controller.loadQuestion(question);
-            } else if (questionType.equals("QCU")) {
-                QCUController controller = fxmlLoader.getController();
-                controller.loadQuestion(question);
-            } else if (questionType.equals("Libre")) {
-                QCLController controller = fxmlLoader.getController();
-                controller.loadQuestion(question);
-            }
+
 
             DialogPane dialogPane = new DialogPane();
             dialogPane.setContent(root);
