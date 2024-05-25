@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.patientsControllers.DossiersPatientsController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.fichesSuiviControllers.FichiSuiviController">
    <effect>
       <DropShadow />
    </effect>
@@ -149,42 +149,27 @@
             </Pane>
             <AnchorPane layoutX="174.0" prefHeight="600.0" prefWidth="626.0">
                <children>
-                  <Text fill="#1588ea" layoutX="-2.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mes Patients" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="50.0">
+                  <Text fill="#1588ea" layoutX="-2.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fiches du suivi" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="128.0">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Text>
-                  <HBox layoutX="-2.0" layoutY="194.0" prefHeight="406.0" prefWidth="626.0">
+                  <HBox layoutX="-2.0" layoutY="182.0" prefHeight="418.0" prefWidth="626.0">
                      <children>
-                        <ScrollPane prefHeight="406.0" prefWidth="620.0" style="-fx-background-color: #fff;">
+                        <ScrollPane prefHeight="406.0" prefWidth="626.0" style="-fx-background-color: #fff;">
                            <content>
-                              <VBox prefHeight="404.0" prefWidth="626.0" style="-fx-background-color: #fff;">
+                              <VBox prefHeight="420.0" prefWidth="626.0" style="-fx-background-color: #fff;">
                                  <children>
-                                    <HBox prefHeight="38.0" prefWidth="606.0" style="-fx-border-color: #1588ea; -fx-border-width: 0 0 2 0;">
+                                    <HBox prefHeight="38.0" prefWidth="626.0" style="-fx-border-color: #1588ea; -fx-border-width: 0 0 2 0;">
                                        <children>
-                                          <Label alignment="CENTER" prefHeight="34.0" prefWidth="65.0" text="No" textAlignment="CENTER">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER" prefHeight="36.0" prefWidth="162.0" text="Nom" textAlignment="CENTER">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER" prefHeight="36.0" prefWidth="186.0" text="Prénom" textAlignment="CENTER">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER" prefHeight="36.0" prefWidth="185.0" text="Actions" textAlignment="CENTER">
+                                          <Label alignment="CENTER" prefHeight="34.0" prefWidth="203.0" text="Fiches du suivi" textAlignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </HBox>
-                                    <ListView fx:id="patientsList" prefHeight="352.0" prefWidth="608.0" />
+                                    <ListView fx:id="ficheList" prefHeight="383.0" prefWidth="626.0" />
                                  </children>
                                  <effect>
                                     <DropShadow blurType="ONE_PASS_BOX" height="196.5" radius="112.375" width="255.0">
@@ -198,7 +183,38 @@
                         </ScrollPane>
                      </children>
                   </HBox>
-               </children></AnchorPane>
+                  <Label layoutX="29.0" layoutY="28.0" prefHeight="34.0" prefWidth="45.0" text="No :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="29.0" layoutY="56.0" prefHeight="34.0" prefWidth="45.0" text="Nom :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="29.0" layoutY="84.0" prefHeight="34.0" prefWidth="68.0" text="Prénom :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numDossier" layoutX="63.0" layoutY="28.0" prefHeight="34.0" prefWidth="22.0" text="02" textFill="#1588ea">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nomPatient" layoutX="74.0" layoutY="56.0" prefHeight="34.0" prefWidth="120.0" text="Bouguessa" textFill="#1588ea">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="prenomPatient" layoutX="97.0" layoutY="84.0" prefHeight="34.0" prefWidth="120.0" text="Wail" textFill="#1588ea">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

@@ -1,6 +1,7 @@
-package Controllers.patientsControllers;
+package Controllers.fichesSuiviControllers;
 
 import Models.DossierPatient.DossierPatientSchema;
+import Models.FicheDeSuivi.FicheDeSuiviSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
 import Models.patient.PatientSchema;
 import com.example.tp_poo.HelloApplication;
@@ -18,56 +19,61 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
-public class DossiersPatientsController implements HelloController.InitializeData {
+public class FichiSuiviController implements HelloController.InitializeWithDossierPatient{
     private OrtophonisteSchema orthophoniste;
     @FXML
     private Label orthoField;
     @FXML
-    private ListView<PatientSchema> patientsList ;
+    private ListView ficheList ;
+    @FXML
+    private Label numDossier;
+    @FXML
+    private Label nomPatient;
+    @FXML
+    private Label prenomPatient;
     private String orthoNom;
     private String orthoPrenom;
-    private final ObservableList<PatientSchema> patients = FXCollections.observableArrayList();
+    private final ObservableList<FicheDeSuiviSchema> fiches = FXCollections.observableArrayList();
     private boolean isInitialized = false;
+
+
 
     @FXML
     @Override
-    public void initialize() {
+    public void initializeWithDossierPatient(DossierPatientSchema dossierPatient, String nom, String prenom) {
+
         if (isInitialized) return; // Skip if already initialized
 
         this.orthophoniste = HelloApplication.currentUser;
         this.orthoNom = orthophoniste.getNom();
         this.orthoPrenom = orthophoniste.getPrenom();
         orthoField.setText(" " + orthoNom + " " + orthoPrenom);
-
+        this.numDossier.setText(String.valueOf(dossierPatient.getId()));
+        this.nomPatient.setText(nom);
+        this.prenomPatient.setText(prenom);
         // Add patients to the list
-        patients.addAll(HelloApplication.patientModel.getAllPatients());
+        fiches.addAll(dossierPatient.getFichesDesSuivis());
         // Set custom cell factory
-        patientsList.setCellFactory(new Callback<ListView<PatientSchema>, ListCell<PatientSchema>>() {
+        ficheList.setCellFactory(new Callback<ListView<FicheDeSuiviSchema>, ListCell<FicheDeSuiviSchema>>() {
             @Override
-            public ListCell<PatientSchema> call(ListView<PatientSchema> listView) {
-                return new ListCell<PatientSchema>() {
+            public ListCell<FicheDeSuiviSchema> call(ListView<FicheDeSuiviSchema> listView) {
+                return new ListCell<FicheDeSuiviSchema>() {
 
                     @Override
-                    protected void updateItem(PatientSchema patient, boolean empty) {
-                        super.updateItem(patient, empty);
-                        if (empty || patient == null) {
+                    protected void updateItem(FicheDeSuiviSchema fiche, boolean empty) {
+                        super.updateItem(fiche, empty);
+                        if (empty || fiche == null) {
                             setText(null);
                             setGraphic(null);
                         } else {
                             String ortho = HelloApplication.currentUser.getEmail();
 
-                            DossierPatientSchema dossierPatient = DossierPatientSchema.loadDossierPatient(ortho, patient.getNom(), patient.getPrenom());
-                            int numDossier = dossierPatient.getId();
 
                             HBox hBox = new HBox(10);
-                            Label numLabel = new Label(String.valueOf(numDossier));
-                            Label lastNameLabel = new Label(patient.getNom());
-                            Label firstNameLabel = new Label(patient.getPrenom());
+                            Label numLabel = new Label("Fiche du suivi num : "+ ficheList.getItems().indexOf(fiche) + 1);
                             Button btn = new Button("Consulter");
 
                             numLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: black; -fx-pref-width: 65.6; -fx-pref-height: 34.4; -fx-alignment:center ");
-                            lastNameLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: black; -fx-pref-width: 146.4; -fx-pref-height: 36; -fx-alignment: center;");
-                            firstNameLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: black; -fx-pref-width: 170.4; -fx-pref-height: 36; -fx-alignment: center;");
                             hBox.setStyle(" -fx-pref-height: 36; ; -fx-background-color: #fff;   -fx-padding: 5;");
                             btn.setStyle("-fx-background-color: #1588ea; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight:bold; -fx-pref-width: 100; -fx-pref-height: 36;  -fx-alignment: center; -fx-cursor:hand;");
 
@@ -75,18 +81,18 @@ public class DossiersPatientsController implements HelloController.InitializeDat
                             btnBox.getChildren().add(btn);
                             btnBox.setMargin(btn, new Insets(0, 0, 0, 45));
 
-                            patientsList.setSelectionModel(null);
+                            ficheList.setSelectionModel(null);
 
                             btn.setOnAction(event -> {
                                 try {
                                     // redirect to dossier patient
 
-                                    DossierPatientSchema.redirectToDossierPatient(event ,dossierPatient, patient.getNom(), patient.getPrenom(), "dossier.fxml", "Dossier Patient");
+                                    DossierPatientSchema.redirectToDossierPatient(event ,dossierPatient,nom, prenom, "dossier.fxml", "Dossier Patient");
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             });
-                            hBox.getChildren().addAll(numLabel, lastNameLabel, firstNameLabel, btn);
+                            hBox.getChildren().addAll(numLabel);
                             setGraphic(hBox);
                         }
                     }
@@ -94,7 +100,7 @@ public class DossiersPatientsController implements HelloController.InitializeDat
             }
         });
 
-        patientsList.setItems(patients);
+        ficheList.setItems(fiches);
         // Set the flag to true after initialization
         isInitialized = true;
     }

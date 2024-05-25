@@ -27,6 +27,11 @@ public class BilanOrthophoniqueSchema implements Serializable {
         this.diagnostiques = diagnostiques;
         this.projetTherapeutique = projetTherapeutique;
     }
+    public BilanOrthophoniqueSchema(ArrayList<EpreuveCliniqueSchema> epreuvesCliniques, ArrayList<TroubleSchema> diagnostiques, String projetTherapeutique) {
+        this.epreuvesCliniques = epreuvesCliniques;
+        this.diagnostiques = diagnostiques;
+        this.projetTherapeutique = projetTherapeutique;
+    }
 
     public AnamneseSchema getAnamnese() {
         return anamnese;

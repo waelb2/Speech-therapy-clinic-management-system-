@@ -2,6 +2,7 @@ package com.example.tp_poo;
 
 import Controllers.dashboardControllers.DashboardController;
 import Controllers.patientsControllers.DossiersPatientsController;
+import Models.DossierPatient.DossierPatientSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -53,6 +54,10 @@ public class HelloController {
     }
     public interface InitializeDataWithObject {
         void initializeWithData(ConsultationObject consultationObject);
+    }
+    public interface InitializeWithDossierPatient{
+       void initializeWithDossierPatient(DossierPatientSchema dossierPatient, String nom, String prenom);
+
     }
     //dashboardController.initilize(orthophoniste);
      public static class ConsultationObject {

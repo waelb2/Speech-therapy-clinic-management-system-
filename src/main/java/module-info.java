@@ -20,4 +20,8 @@ module com.example.tp_poo {
     opens  Controllers.settingsControllers;
     exports Controllers.testsAnamsControllers;
     opens  Controllers.testsAnamsControllers;
+    exports Controllers.fichesSuiviControllers;
+    opens  Controllers.fichesSuiviControllers;
+    exports Controllers.bilanController;
+    opens  Controllers.bilanController;
 }

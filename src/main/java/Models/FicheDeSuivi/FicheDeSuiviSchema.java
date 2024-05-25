@@ -9,7 +9,4 @@ import java.util.ArrayList;
 public class FicheDeSuiviSchema implements Serializable {
     private ArrayList<ObjectifSchema> objectifSchema;
 
-
-
-
 }

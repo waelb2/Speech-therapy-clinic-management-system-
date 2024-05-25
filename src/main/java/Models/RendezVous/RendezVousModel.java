@@ -66,4 +66,32 @@ public class RendezVousModel implements RendezVousDB, Serializable {
               rendezVouss = new TreeSet<>();
        }
    }
+   public TreeSet<RendezVousSchema> getRendezVouss() {
+        return rendezVouss;
+    }
+    public void setRendezVouss(TreeSet<RendezVousSchema> rendezVouss) {
+        this.rendezVouss = rendezVouss;
+    }
+    public TreeMap<LocalDate, TreeSet<RendezVousSchema>> getRendezVoussByDate() {
+        TreeMap<LocalDate, TreeSet<RendezVousSchema>> rdvsByDate = new TreeMap<>();
+        for (RendezVousSchema rdv : rendezVouss) {
+            if (rdvsByDate.containsKey(rdv.getDate())) {
+                rdvsByDate.get(rdv.getDate()).add(rdv);
+            } else {
+                TreeSet<RendezVousSchema> rdvs = new TreeSet<>();
+                rdvs.add(rdv);
+                rdvsByDate.put(rdv.getDate(), rdvs);
+            }
+        }
+        return rdvsByDate;
+    }
+    public TreeSet<RendezVousSchema> getRendezVoussByDate(LocalDate date) {
+        TreeSet<RendezVousSchema> rdvsByDate = new TreeSet<>();
+        for (RendezVousSchema rdv : rendezVouss) {
+            if (rdv.getDate().equals(date)) {
+                rdvsByDate.add(rdv);
+            }
+        }
+        return rdvsByDate;
+    }
 }
