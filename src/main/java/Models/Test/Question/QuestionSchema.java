@@ -6,6 +6,9 @@ public class QuestionSchema implements Serializable {
     private String enonce;
     private int score;
 
+    public QuestionSchema() {
+    }
+
     public QuestionSchema(String enonce, int score) {
         this.enonce = enonce;
         this.score = score;

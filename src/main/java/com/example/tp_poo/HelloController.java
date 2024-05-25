@@ -3,6 +3,7 @@ package com.example.tp_poo;
 import Controllers.dashboardControllers.DashboardController;
 import Controllers.patientsControllers.DossiersPatientsController;
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.Test.Question.QuestionSchema;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class HelloController {
     @FXML
@@ -48,11 +50,16 @@ public class HelloController {
         stage.show();
     }
 
+
+
    public  interface  InitializeData {
         void initialize();
     }
     public interface InitializeDataWithObject {
         void initializeWithData(ConsultationObject consultationObject);
+    }
+    public interface InitializeDataWithQuestions{
+        void initializeWithQuestions(ArrayList<QuestionSchema> questions);
     }
     //dashboardController.initilize(orthophoniste);
      public static class ConsultationObject {

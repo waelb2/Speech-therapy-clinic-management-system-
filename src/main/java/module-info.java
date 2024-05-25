@@ -19,5 +19,13 @@ module com.example.tp_poo {
     exports Controllers.settingsControllers;
     opens  Controllers.settingsControllers;
     exports Controllers.testsAnamsControllers;
-    opens  Controllers.testsAnamsControllers;
+    opens  Controllers.testsAnamsControllers to javafx.fxml;
+    exports Controllers.testsAnamsControllers.testCreationControllers;
+    opens Controllers.testsAnamsControllers.testCreationControllers to javafx.fxml;
+    exports Models.Test.Question;
+
+
+
+
+
 }

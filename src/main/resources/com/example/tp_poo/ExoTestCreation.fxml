@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.testsAnamsControllers.testCreationControllers.TestChoiceController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.testsAnamsControllers.testCreationControllers.ExoTestCreationController">
    <effect>
       <DropShadow />
    </effect>
@@ -28,7 +29,7 @@
                   </DropShadow>
                </effect>
                <children>
-                  <ImageView fx:id="logoImage" fitHeight="85.0" fitWidth="135.0" layoutX="20.0" layoutY="24.0" onMouseClicked="#handleLogoClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                  <ImageView fx:id="logoImage" fitHeight="85.0" fitWidth="135.0" layoutX="20.0" layoutY="24.0" onMouseClicked="#handleLogoClick" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../assets/bluelogo.png" />
                      </image>
@@ -37,8 +38,22 @@
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
+                     <graphic>
+                        <Label prefHeight="25.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Créer rendez-vous" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <Label text="+" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.5" />
+                                 </font>
+                              </Label>
+                           </graphic>
+                        </Label>
+                     </graphic>
                   </Button>
-                  <Button fx:id="dossiersPatients" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="#383535">
+                  <Button fx:id="dossiersPatients" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fFF; -fx-cursor: hand;" textFill="#383535">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -57,7 +72,7 @@
                         </Label>
                      </graphic>
                   </Button>
-                  <Button fx:id="testAnam" layoutY="310.0" mnemonicParsing="false" onAction="#handleTestsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #62B6FF; -fx-cursor: hand;" textFill="WHITE">
+                  <Button fx:id="testAnam" layoutY="310.0" mnemonicParsing="false" onAction="#handleTestsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -128,41 +143,59 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label layoutX="25.0" layoutY="155.0" prefHeight="25.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Créer rendez-vous" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <Label text="+" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="17.5" />
-                           </font>
-                        </Label>
-                     </graphic>
-                  </Label>
                </children>
             </Pane>
-            <AnchorPane layoutX="172.0" layoutY="-3.0" prefHeight="600.0" prefWidth="626.0">
+            <AnchorPane layoutX="172.0" layoutY="7.0" prefHeight="600.0" prefWidth="626.0">
                <children>
-                  <Text fill="#1588ea" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout d'un nouveau test" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="75.0">
-                     <font>
-                        <Font name="System Bold" size="26.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="66.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleQstTestCreationClick" prefHeight="182.0" prefWidth="197.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Test de questions" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="378.0" layoutY="209.0" mnemonicParsing="false" prefHeight="182.0" prefWidth="197.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Test d'exercices" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Button>
+                  <AnchorPane layoutX="82.0" layoutY="138.0" prefHeight="404.0" prefWidth="463.0" style="-fx-border-color: #1588ea; -fx-background-color: #fff; -fx-border-width: 0.2;">
+                     <effect>
+                        <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                           <color>
+                              <Color red="0.7254902124404907" green="0.8392156958580017" blue="0.9254902005195618" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <children>
+                        <TextField fx:id="tf_intitule" alignment="CENTER" layoutX="182.0" layoutY="79.0" prefHeight="26.0" prefWidth="120.0" promptText="intitulé" style="-fx-border-color: #1588ea;" />
+                        <Text fx:id="rdvForm" fill="#1588ea" layoutX="60.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intitulé du test :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="createRdv1" layoutX="138.0" layoutY="227.0" mnemonicParsing="false" onAction="#addExercice" prefHeight="48.0" prefWidth="164.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <graphic>
+                              <Label prefHeight="42.0" prefWidth="173.0" style="-fx-cursor: hand;" text="Ajouter un exercice" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <Label text="+" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="17.5" />
+                                       </font>
+                                    </Label>
+                                 </graphic>
+                              </Label>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="284.0" layoutY="326.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="154.0" style="-fx-background-color: #1588ea;" text="Enregistrer le test" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
+            <Text fill="#1588ea" layoutX="172.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout d'un nouveau test d'exercices" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="50.0">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
-      <Button mnemonicParsing="false" text="Button" />
    </children>
 </HBox>

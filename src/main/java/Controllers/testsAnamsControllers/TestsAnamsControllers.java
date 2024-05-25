@@ -85,10 +85,12 @@ public class TestsAnamsControllers  implements HelloController.InitializeData {
 
     public void handleMesTestsClick(ActionEvent event) {
         try{
-            HelloController.redirectPage(event , "mesTests.fxml", "Ajouter un test");
+            HelloController.redirectPage(event , "mesTests.fxml", "Mes tests");
         }catch (Exception e){
             e.getMessage();
         }
     }
+
+
 
 }

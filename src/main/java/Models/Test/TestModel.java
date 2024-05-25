@@ -14,12 +14,15 @@ public class TestModel implements TestDB, Serializable {
 
     TreeMap<String, TestSchema> mesTests = new TreeMap<>();
 
-    public TestModel(TreeMap<String, TestSchema> mesTests) {
-        this.mesTests = mesTests;
+
+    public TreeMap<String,TestSchema> getAllTests(){
+        return mesTests;
     }
+
+
     @Override
     public TestSchema createTestQst(String nom, String observation, ArrayList<QuestionSchema> questions) {
-        TestQstSchema testQstSchema = new TestQstSchema(nom, observation, questions);
+        TestQstSchema testQstSchema = new TestQstSchema(nom, questions);
         mesTests.put(nom, testQstSchema);
         return testQstSchema;
     }
@@ -43,7 +46,7 @@ public class TestModel implements TestDB, Serializable {
 
     @Override
     public TestSchema createTestExo(String nom, String observation, ArrayList<ExerciceSchema> exercices) {
-        TestExoSchema testExo = new TestExoSchema(nom, observation, exercices);
+        TestExoSchema testExo = new TestExoSchema(nom, exercices);
         mesTests.put(nom, testExo);
         return testExo;
     }
@@ -72,7 +75,7 @@ public class TestModel implements TestDB, Serializable {
     @Override
     public void loadTests() throws IOException, ClassNotFoundException {
         // Check if the file exists
-        File file = new File(HelloApplication.currentUserDir + "/mesTests.dat");
+        File file = new File(HelloApplication.currentUserDir + "/MesTestesETAnamneses/mesTests.dat");
         if (file.exists()) {
             try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
                 mesTests = (TreeMap<String, TestSchema>) objectInputStream.readObject();
@@ -89,7 +92,7 @@ public class TestModel implements TestDB, Serializable {
     @Override
     public void saveTests() throws IOException {
         // save mesTests to mesTests.dat
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(HelloApplication.currentUserDir + "/mesTests.dat"))) {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(HelloApplication.currentUserDir + "/MesTestesETAnamneses/mesTests.dat"))) {
             objectOutputStream.writeObject(mesTests);
         } catch (IOException e) {
             System.out.println(e.getMessage());
