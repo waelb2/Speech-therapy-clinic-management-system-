@@ -4,21 +4,35 @@ package Models.Test;
 import Databases.TestDB;
 import Models.Test.Exercice.ExerciceSchema;
 import Models.Test.Question.QuestionSchema;
+import Models.patient.PatientSchema;
 import com.example.tp_poo.HelloApplication;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.TreeMap;
 
 public class TestModel implements TestDB, Serializable {
 
     TreeMap<String, TestSchema> mesTests = new TreeMap<>();
 
-
-    public TreeMap<String,TestSchema> getAllTests(){
+    @Override
+    public TreeMap<String, TestSchema> getAllTests() {
         return mesTests;
     }
 
+
+    @Override
+    public TestSchema[] getAllTest() {
+        Set<String> keys = mesTests.keySet();
+        TestSchema[] mesTestsArray = new TestSchema[keys.size()];
+        int i = 0;
+        for (String key : keys) {
+            mesTestsArray[i] = mesTests.get(key);
+            i++;
+        }
+        return mesTestsArray;
+    }
 
     @Override
     public TestSchema createTestQst(String nom, String observation, ArrayList<QuestionSchema> questions) {
@@ -26,19 +40,23 @@ public class TestModel implements TestDB, Serializable {
         mesTests.put(nom, testQstSchema);
         return testQstSchema;
     }
+
     @Override
     public TestSchema createTestQst(TestQstSchema testQstSchema) {
         mesTests.put(testQstSchema.getNom(), testQstSchema);
         return testQstSchema;
     }
+
     @Override
     public TestQstSchema deleteTestQst(String nom) {
         return (TestQstSchema) mesTests.remove(nom);
     }
+
     @Override
     public boolean testQstExist(String nom) {
         return mesTests.containsKey(nom);
     }
+
     @Override
     public TestQstSchema updateTestQst(TestQstSchema testQst) {
         return (TestQstSchema) mesTests.put(testQst.getNom(), testQst);
@@ -50,11 +68,13 @@ public class TestModel implements TestDB, Serializable {
         mesTests.put(nom, testExo);
         return testExo;
     }
+
     @Override
     public TestSchema createTestExo(TestSchema testExo) {
         mesTests.put(testExo.getNom(), testExo);
         return testExo;
     }
+
     @Override
     public TestSchema findTest(String nom) {
         return mesTests.get(nom);
@@ -64,14 +84,17 @@ public class TestModel implements TestDB, Serializable {
     public TestSchema deleteTestExo(String nom) {
         return mesTests.remove(nom);
     }
+
     @Override
     public boolean testExoExist(String nom) {
         return mesTests.containsKey(nom);
     }
+
     @Override
     public TestSchema updateTestExo(TestSchema testExo) {
         return mesTests.put(testExo.getNom(), testExo);
     }
+
     @Override
     public void loadTests() throws IOException, ClassNotFoundException {
         // Check if the file exists
@@ -98,6 +121,7 @@ public class TestModel implements TestDB, Serializable {
             System.out.println(e.getMessage());
         }
     }
+
     @Override
     public int countTests() {
         return this.mesTests.size();

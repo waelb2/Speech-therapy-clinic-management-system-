@@ -29,7 +29,7 @@ public class addExoController implements HelloController.InitializeDataWithExerc
     @FXML
     private Button saveExo;
 
-
+private ArrayList<ExerciceSchema> exercice;
     private ExerciceSchema exo = new ExerciceSchema();
     @FXML
     @Override

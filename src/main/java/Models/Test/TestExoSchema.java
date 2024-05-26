@@ -13,7 +13,9 @@ public class TestExoSchema extends TestSchema implements Serializable {
         this.exercices = exercices;
         this.scoreMoy = scoreMoy;
     }
-
+    public TestExoSchema(String nom){
+        super(nom);
+    }
 
     public ArrayList<ExerciceSchema> getExercices() {
         return exercices;

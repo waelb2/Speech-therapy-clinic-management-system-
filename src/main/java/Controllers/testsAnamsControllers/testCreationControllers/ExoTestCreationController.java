@@ -3,6 +3,7 @@ package Controllers.testsAnamsControllers.testCreationControllers;
 import Exceptions.AllInputsShouldBeProvidedException;
 import Models.Anamnese.AnamneseSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.Test.TestExoSchema;
 import Models.Test.TestQstSchema;
 import Models.Test.TestSchema;
 import Utils.Popups;
@@ -19,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.PrivateKey;
 import java.util.ArrayList;
 
 public class ExoTestCreationController implements HelloController.InitializeData {
@@ -33,6 +35,8 @@ public class ExoTestCreationController implements HelloController.InitializeData
     private ToggleGroup questionType;
     @FXML
     private TextField tf_intitule;
+    @FXML
+    private TextField tf_requiredMaterial;
 
 
     @FXML
@@ -138,6 +142,15 @@ public class ExoTestCreationController implements HelloController.InitializeData
             System.out.println(e.getMessage());
         }
     }
+
+    public void handleSaveTest(ActionEvent event) throws IOException {
+        String nom = tf_intitule.getText();
+        TestExoSchema test = new TestExoSchema(nom);
+        HelloApplication.testModel.createTestExo(test);
+        HelloApplication.testModel.saveTests();
+        System.out.println(mesTests);
+    }
+
 
 }
 

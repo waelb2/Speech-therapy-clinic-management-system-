@@ -181,7 +181,7 @@
                               </Label>
                            </graphic>
                         </Button>
-                        <Button fx:id="saveTest" layoutX="285.0" layoutY="285.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="154.0" style="-fx-background-color: #1588ea;" text="Enregistrer le test" textFill="WHITE">
+                        <Button fx:id="saveTest" layoutX="285.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleSaveTest" prefHeight="60.0" prefWidth="154.0" style="-fx-background-color: #1588ea;" text="Enregistrer le test" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>

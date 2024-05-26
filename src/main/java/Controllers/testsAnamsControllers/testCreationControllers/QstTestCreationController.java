@@ -177,10 +177,12 @@ public class QstTestCreationController implements HelloController.InitializeData
         }
     }
 
-    public void handleSaveTest(ActionEvent event){
+    public void handleSaveTest(ActionEvent event) throws IOException {
         String nom = tf_intitule.getText();
         TestQstSchema test = new TestQstSchema(nom);
         HelloApplication.testModel.createTestQst(test);
+        HelloApplication.testModel.saveTests();
+        System.out.println(nom);
     }
 
 }
