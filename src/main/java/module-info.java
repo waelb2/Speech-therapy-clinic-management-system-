@@ -17,7 +17,7 @@ module com.example.tp_poo {
     exports Controllers.rdvControllers;
     opens  Controllers.rdvControllers to javafx.fxml;
     exports Controllers.settingsControllers;
-    opens  Controllers.settingsControllers;
+    opens  Controllers.settingsControllers to javafx.fxml;
     exports Controllers.testsAnamsControllers;
     opens  Controllers.testsAnamsControllers to javafx.fxml;
     exports Controllers.fichesSuiviControllers;
