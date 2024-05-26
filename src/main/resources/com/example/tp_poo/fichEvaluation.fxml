@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.fichesSuiviControllers.FichiSuiviController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.fichesSuiviControllers.FIcheEvaluationController">
    <effect>
       <DropShadow />
    </effect>
@@ -57,7 +55,7 @@
                         </Label>
                      </graphic>
                   </Button>
-                  <Button fx:id="dossiersPatients" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #62B6FF; -fx-cursor: hand;" textFill="#383535">
+                  <Button fx:id="dossiersPatients" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fFF; -fx-cursor: hand;" textFill="#383535">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -151,27 +149,44 @@
             </Pane>
             <AnchorPane layoutX="174.0" prefHeight="600.0" prefWidth="626.0">
                <children>
-                  <HBox layoutY="330.0" prefHeight="262.0" prefWidth="626.0">
+                  <Button fx:id="createRdv1" alignment="CENTER" contentDisplay="CENTER" layoutX="383.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleAddRdvClick" prefHeight="36.0" prefWidth="142.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <graphic>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Créer une anamnèse" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <HBox layoutY="122.0" prefHeight="411.0" prefWidth="626.0">
                      <children>
-                        <ScrollPane prefHeight="248.0" prefWidth="626.0" style="-fx-background-color: #fff;">
+                        <ScrollPane prefHeight="414.0" prefWidth="626.0" style="-fx-background-color: #fff;">
                            <content>
-                              <VBox prefHeight="253.0" prefWidth="626.0" style="-fx-background-color: #fff;">
+                              <VBox prefHeight="406.0" prefWidth="630.0" style="-fx-background-color: #fff;">
                                  <children>
-                                    <HBox prefHeight="38.0" prefWidth="626.0" spacing="200.0" style="-fx-border-color: #1588ea; -fx-border-width: 0 0 2 0;">
+                                    <HBox prefHeight="36.0" prefWidth="581.0" style="-fx-border-color: #1588ea; -fx-border-width: 0 0 2 0;">
                                        <children>
-                                          <Label alignment="CENTER" prefHeight="34.0" prefWidth="203.0" text="Fiches du suivi" textAlignment="CENTER">
+                                          <Label alignment="CENTER" prefHeight="33.0" prefWidth="260.0" text="Objectif" textAlignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER" prefHeight="34.0" prefWidth="203.0" text="Actions" textAlignment="CENTER">
+                                          <Label alignment="CENTER" prefHeight="33.0" prefWidth="326.0" text="Durée" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" prefHeight="33.0" prefWidth="326.0" text="Note" textAlignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </HBox>
-                                    <ListView fx:id="ficheList" prefHeight="220.0" prefWidth="626.0" />
+                                    <ListView fx:id="objectifsList" prefHeight="369.0" prefWidth="630.0" />
                                  </children>
                                  <effect>
                                     <DropShadow blurType="ONE_PASS_BOX" height="196.5" radius="112.375" width="255.0">
@@ -185,71 +200,25 @@
                         </ScrollPane>
                      </children>
                   </HBox>
-                  <Label layoutX="74.0" layoutY="28.0" prefHeight="34.0" prefWidth="45.0" text="No :">
+                  <Button fx:id="createRdv2" layoutX="544.0" layoutY="543.0" mnemonicParsing="false" onAction="#handleNextButton" prefHeight="36.0" prefWidth="59.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="13.0" />
                      </font>
-                  </Label>
-                  <Label layoutX="156.0" layoutY="28.0" prefHeight="34.0" prefWidth="45.0" text="Nom :">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="301.0" layoutY="28.0" prefHeight="34.0" prefWidth="68.0" text="Prénom :">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="numDossier" layoutX="108.0" layoutY="28.0" prefHeight="34.0" prefWidth="22.0" text="02" textFill="#1588ea">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="nomPatient" layoutX="202.0" layoutY="28.0" prefHeight="34.0" prefWidth="120.0" text="Bouguessa" textFill="#1588ea">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="prenomPatient" layoutX="369.0" layoutY="28.0" prefHeight="34.0" prefWidth="120.0" text="Wail" textFill="#1588ea">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <AnchorPane fx:id="type_suivi" layoutX="74.0" layoutY="82.0" prefHeight="172.0" prefWidth="463.0" style="-fx-border-color: #1588ea; -fx-background-color: #fff; -fx-border-width: 0.2;">
-                     <effect>
-                        <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
-                           <color>
-                              <Color red="0.7254902124404907" green="0.8392156958580017" blue="0.9254902005195618" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                     <children>
-                        <Text fx:id="rdvForm1" fill="#1588ea" layoutX="61.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter des objectifs">
+                     <graphic>
+                        <Label prefHeight="25.0" prefWidth="30.0" style="-fx-cursor: hand;" text="Next" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="15.0" />
+                              <Font name="System Bold" size="12.0" />
                            </font>
-                        </Text>
-                        <Label fx:id="label_nom" layoutX="99.0" layoutY="74.0" prefHeight="18.0" prefWidth="74.0" textFill="#0c96ff" />
-                        <Label fx:id="label_age" layoutX="388.0" layoutY="74.0" prefHeight="18.0" prefWidth="17.0" textFill="#0c96ff" />
-                        <Label fx:id="label_date" layoutX="95.0" layoutY="206.0" prefHeight="18.0" prefWidth="66.0" textFill="#0c96ff" />
-                        <Label fx:id="label_hour" layoutX="244.0" layoutY="206.0" prefHeight="18.0" prefWidth="18.0" textFill="#0c96ff" />
-                        <Label fx:id="label_min" layoutX="278.0" layoutY="206.0" prefHeight="18.0" prefWidth="18.0" textFill="#0c96ff" />
-                        <TextField fx:id="tf_objectif" layoutX="63.0" layoutY="60.0" prefHeight="27.0" prefWidth="120.0" promptText="objectif" style="-fx-border-color: #1588ea;" />
-                        <ComboBox fx:id="objectifPicker" layoutX="215.0" layoutY="60.0" prefHeight="27.0" prefWidth="162.0" promptText="Durée du suivi" style="-fx-background-color: #fff; -fx-border-color: #1588ea;" />
-                        <Button fx:id="btn_next" layoutX="219.0" layoutY="162.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="38.0" prefWidth="216.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Créer une nouvelle fiche" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btn_ajouterObjectif" layoutX="406.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleAddObjectif" prefHeight="21.0" prefWidth="28.0" style="-fx-background-color: #1588ea; -fx-cursor: hand; -fx-background-radius: 100%;" text="+" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
+                        </Label>
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
+            <Text fill="#1588ea" layoutX="172.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Evaluer la dèrnière fiche du suivi" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="50.0">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

@@ -1,10 +1,12 @@
 package Controllers.bilanController;
 
+import Controllers.fichesSuiviControllers.FichiSuiviController;
 import Controllers.testsAnamsControllers.TestsAnamsControllers;
 import Exceptions.AllInputsShouldBeProvidedException;
 import Models.BilanOrthophonique.BilanOrthophoniqueSchema;
 import Models.DossierPatient.DossierPatientSchema;
 import Models.EpreuveClinique.EpreuveCliniqueSchema;
+import Models.FicheDeSuivi.FicheDeSuiviSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
 import Models.RendezVous.TypeSuivi;
 import Models.Test.TestSchema;
@@ -43,6 +45,8 @@ public class BilanController implements  HelloController.InitializeWithDossierPa
     ComboBox troublePicker;
     private  String orthoNom  ;
     private  String orthoPrenom  ;
+    private String patientNom;
+    private String patientPrenom;
 
 
 
@@ -51,6 +55,8 @@ public class BilanController implements  HelloController.InitializeWithDossierPa
 
     private final ObservableList<TestSchema> testes = FXCollections.observableArrayList();
     private  DossierPatientSchema dossier;
+    ArrayList<TroubleSchema>  troubles = new ArrayList<>();
+    String rdvtype ;
 
     @FXML
     @Override
@@ -61,7 +67,12 @@ public class BilanController implements  HelloController.InitializeWithDossierPa
         this.orthoPrenom = orthophoniste.getPrenom();
         orthoField.setText(" " + orthoNom + " " + orthoPrenom);
 
-        if(nom != "Consultation"){
+        String rdvType = nom;
+        rdvtype = nom;
+        patientNom = prenom.split(" ")[0];
+        patientPrenom = prenom.split(" ")[1];
+
+        if(rdvType != "Consultation"){
            btn_creer.setVisible(false);
         }
 
@@ -114,30 +125,49 @@ public class BilanController implements  HelloController.InitializeWithDossierPa
             e.getMessage();
         }}
 
+    public void handleTroubleButton(ActionEvent event) {
+        if(tf_trouble.getText().isEmpty() || troublePicker.getValue() == null){
+            Popups.showErrorMessage("Erreur", "Trouble et catégorie doivent être remplis");
+            return;
+        }
+        String troubleNom = tf_trouble.getText();
+        TroubleCategories troubleCategory = (TroubleCategories) troublePicker.getValue();
+        TroubleSchema trouble = new TroubleSchema(troubleNom, troubleCategory);
+        troubles.add(trouble);
+        tf_trouble.setText("");
+    }
     public void handleNextButton(ActionEvent event) throws Exception{
 
         //validate inputs
         try{
-          if(tf_trouble.getText().isEmpty() || tf_project.getText().isEmpty() || troublePicker.getValue() == null){
+          if( tf_project.getText().isEmpty() || troublePicker.getValue() == null){
              throw new AllInputsShouldBeProvidedException();
          }
-            String troubleNom = tf_trouble.getText();
-            TroubleCategories troubleCategory = (TroubleCategories) troublePicker.getValue();
-            TroubleSchema trouble = new TroubleSchema(troubleNom, troubleCategory);
+
             String projet = tf_project.getText();
             ArrayList<TestSchema> testes = new ArrayList<>();
             EpreuveCliniqueSchema epreuveClinique = new EpreuveCliniqueSchema("observation", testes);
             ArrayList<EpreuveCliniqueSchema> epreuvesCliniques = new ArrayList<>();
             epreuvesCliniques.add(epreuveClinique);
-            ArrayList<TroubleSchema>  troubles = new ArrayList<>();
-            troubles.add(trouble);
 
 
             // Create BilanOrthophoniqueSchema
              BilanOrthophoniqueSchema bilan = new BilanOrthophoniqueSchema(epreuvesCliniques, troubles, projet);
              dossier.addBO(bilan);
-            System.out.println(dossier.getId() +  " " + dossier.getbO().size());
+             HelloApplication.dossierPatientModel.updateDossierPatient(dossier);
+             HelloApplication.dossierPatientModel.saveDossierPatient();
+
+             DossierPatientSchema.saveDossierPatient(dossier, HelloApplication.currentUser.getEmail(), patientNom, patientPrenom);
+
             // Redirect to the next page
+            FicheDeSuiviSchema fiche = dossier.getFichesDesSuivis().get(dossier.getFichesDesSuivis().size() - 1);
+            if(rdvtype == "Suivi"){
+                FicheDeSuiviSchema.redirectToFicheSuivi(event, fiche,dossier,patientNom, patientPrenom,"fichEvaluation.fxml", "Fiche de suivi");
+
+            }
+            else{
+                HelloController.redirectPage(event, "observation.fxml", "Observation");
+            }
         } catch (AllInputsShouldBeProvidedException e){
             Popups.showErrorMessage("Erreur", "Tous les champs doivent être remplis");
         }

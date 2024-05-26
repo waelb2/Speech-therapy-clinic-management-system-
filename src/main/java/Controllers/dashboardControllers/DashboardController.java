@@ -106,11 +106,11 @@ public class DashboardController  implements HelloController.InitializeData  {
 
                                                 // Load the DossierPatientSchema object (if needed)
                                                 DossierPatientSchema dossier = DossierPatientSchema.loadDossierPatient(HelloApplication.currentUser.getEmail(), nom, prenom);
-                                                // Process the dossier as needed
+
                                                 TreeSet <RendezVousSchema> rdvs = dossier.getRendezVousPatient();
                                                 for (RendezVousSchema rdv1 : rdvs) {
                                                     if(rdv.compareTo(rdv1) == 0){
-                                                       DossierPatientSchema.redirectToDossierPatient(event, dossier,rdvType.getText(),nom, "creerBilan.fxml", "Créer Bilan Orthophonique");
+                                                       DossierPatientSchema.redirectToDossierPatient(event, dossier,rdvType.getText(),nom+" " +prenom, "creerBilan.fxml", "Créer Bilan Orthophonique");
                                                        return;
                                                     }
                                                 }
