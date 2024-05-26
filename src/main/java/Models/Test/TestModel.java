@@ -9,6 +9,7 @@ import com.example.tp_poo.HelloApplication;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -102,6 +103,10 @@ public class TestModel implements TestDB, Serializable {
         if (file.exists()) {
             try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
                 mesTests = (TreeMap<String, TestSchema>) objectInputStream.readObject();
+                Map.Entry<String, TestSchema> firstEntry = mesTests.firstEntry();
+                System.out.println(mesTests.size());
+                //System.out.println(mesTests.firstEntry().getKey());
+               // System.out.println(mesTests.firstEntry().getValue().getNom());
             } catch (IOException | ClassNotFoundException e) {
                 // Handle exceptions
                 System.out.println(e.getMessage());

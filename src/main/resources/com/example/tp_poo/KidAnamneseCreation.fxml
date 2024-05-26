@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.testsAnamsControllers.anamneseCreation.anamnsQKidCreationController">
+   <effect>
+      <DropShadow />
+   </effect>
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="828.0">
+         <children>
+            <Pane layoutY="-7.0" prefHeight="607.0" prefWidth="172.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow radius="7.66" width="11.64">
+                     <color>
+                        <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <ImageView fx:id="logoImage" fitHeight="85.0" fitWidth="135.0" layoutX="20.0" layoutY="24.0" onMouseClicked="#handleLogoClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/bluelogo.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="createRdv" layoutX="16.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleAddRdvClick" prefHeight="36.0" prefWidth="142.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="25.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Créer rendez-vous" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <Label text="+" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.5" />
+                                 </font>
+                              </Label>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="dossiersPatients" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fFF; -fx-cursor: hand;" textFill="#383535">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text=" Dossiers patient" textFill="#404040">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/patient.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="testAnam" layoutY="310.0" mnemonicParsing="false" onAction="#handleTestsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text=" Testes et Anams" textFill="#404040">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/examen.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="stats" layoutY="361.0" mnemonicParsing="false" onAction="#handleStatsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text="  Statistiques" textFill="#404040">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/diagramme.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="settings" layoutY="412.0" mnemonicParsing="false" onAction="#handleSettingsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text="  Paramètres" textFill="#404040">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/parametres-cog.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <HBox layoutX="18.0" layoutY="521.0" prefHeight="26.0" prefWidth="154.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="28.0" text=" Dr :" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="orthoField" prefHeight="26.0" prefWidth="120.0" textAlignment="CENTER" textFill="#1588ea">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <AnchorPane layoutX="172.0" layoutY="7.0" prefHeight="600.0" prefWidth="626.0">
+               <children>
+                  <AnchorPane layoutX="81.0" layoutY="139.0" prefHeight="404.0" prefWidth="463.0" style="-fx-border-color: #1588ea; -fx-background-color: #fff; -fx-border-width: 0.2;">
+                     <effect>
+                        <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                           <color>
+                              <Color red="0.7254902124404907" green="0.8392156958580017" blue="0.9254902005195618" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <children>
+                        <TextField fx:id="tf_intitule" alignment="CENTER" layoutX="224.0" layoutY="80.0" prefHeight="26.0" prefWidth="120.0" promptText="intitulé" style="-fx-border-color: #1588ea;" />
+                        <Text fx:id="rdvForm" fill="#1588ea" layoutX="60.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre de l'anamnese :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="createRdv1" layoutX="142.0" layoutY="271.0" mnemonicParsing="false" onAction="#addQuestion" prefHeight="48.0" prefWidth="164.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Button>
+                        <RadioButton fx:id="conditionsNatales" layoutX="60.0" layoutY="195.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Conditions natales" textFill="#1588ea">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="questionType" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="developpementPsychomoteur" layoutX="198.0" layoutY="195.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Développement psychomoteur" textFill="#1588ea" toggleGroup="$questionType">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="structureFamiliale" layoutX="40.0" layoutY="158.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Structure familiale" textFill="#1588ea" toggleGroup="$questionType">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="developpementLangagier" layoutX="64.0" layoutY="221.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Développement langagier" textFill="#1588ea" toggleGroup="$questionType">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="caractereEtComportement" layoutX="229.0" layoutY="228.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Caractére et comportement" textFill="#1588ea" toggleGroup="$questionType">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="dynamiqueFamiliale" layoutX="160.0" layoutY="158.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Dynamique familiale" textFill="#1588ea" toggleGroup="$questionType">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="antecedentsFamiliaux" layoutX="280.0" layoutY="158.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Antécédents familiaux" textFill="#1588ea" toggleGroup="$questionType">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </RadioButton>
+                        <Button fx:id="bt_saveAnam" layoutX="284.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleSaveTest" prefHeight="60.0" prefWidth="180.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Enregistrer l'anamnese" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Text fx:id="rdvForm1" fill="#1588ea" layoutX="56.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie de la question :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="addQuestionToAnam" layoutX="149.0" layoutY="274.0" prefHeight="42.0" prefWidth="173.0" style="-fx-cursor: hand;" text="Ajouter une question" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <Label text="+" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.5" />
+                                 </font>
+                              </Label>
+                           </graphic>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <Text fill="#1588ea" layoutX="172.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout d'un anamnese pour enfant " textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="50.0">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

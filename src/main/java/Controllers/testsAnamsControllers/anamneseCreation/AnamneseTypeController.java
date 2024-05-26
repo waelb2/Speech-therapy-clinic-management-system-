@@ -1,4 +1,4 @@
-package Controllers.testsAnamsControllers;
+package Controllers.testsAnamsControllers.anamneseCreation;
 
 import Models.Anamnese.AnamneseSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
@@ -14,7 +14,8 @@ import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
-public class TestsAnamsControllers implements HelloController.InitializeData {
+public class AnamneseTypeController implements HelloController.InitializeData {
+
     private OrtophonisteSchema orthophoniste;
     private ArrayList<TestSchema> mesTests;
     private ArrayList<AnamneseSchema> mesAnamneses;
@@ -24,9 +25,8 @@ public class TestsAnamsControllers implements HelloController.InitializeData {
     private String orthoPrenom;
 
 
-
     @FXML
-    private Button bt_addAnamnese;
+    private Button adultCat;
 
     @FXML
     private Button createRdv;
@@ -35,7 +35,11 @@ public class TestsAnamsControllers implements HelloController.InitializeData {
     private Button dossiersPatients;
 
     @FXML
+    private Button kidCat;
+
+    @FXML
     private ImageView logoImage;
+
 
 
     @FXML
@@ -46,6 +50,7 @@ public class TestsAnamsControllers implements HelloController.InitializeData {
 
     @FXML
     private Button testAnam;
+
     @FXML
 
     @Override
@@ -106,34 +111,26 @@ public class TestsAnamsControllers implements HelloController.InitializeData {
             e.getMessage();
         }
     }
+
     @FXML
-    public void handleAjouterTestClick(ActionEvent event) {
+    public void handleAdultAnamnese(ActionEvent event) {
         try {
-            HelloController.redirectPage(event, "TestCategorieChoicePage.fxml", "Ajouter un test");
+            HelloController.redirectPage(event, "AdultAnamneseCreation.fxml", "adultCat");
         } catch (Exception e) {
             e.getMessage();
         }
+
     }
 
     @FXML
-    public void handleMesTestsClick(ActionEvent event) {
+    public void handleKidAnamnese(ActionEvent event) {
         try {
-            HelloController.redirectPage(event, "mesTests.fxml", "Mes tests");
-            System.out.println("rr");
+            HelloController.redirectPage(event, "KidAnamneseCreation.fxml", "kidCat");
         } catch (Exception e) {
             e.getMessage();
         }
+
     }
-
-    @FXML
- public void handleAddAnamnese(ActionEvent event) {
-        try {
-            HelloController.redirectPage(event, "AnamneseTypeView.fxml", "bt_AddAnamnese");
-            System.out.println("rr");
-        } catch (Exception e) {
-            e.getMessage();
-        }
-    }
-
-
 }
+
+

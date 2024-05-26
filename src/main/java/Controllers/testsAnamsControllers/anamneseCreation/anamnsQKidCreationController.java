@@ -1,9 +1,13 @@
-package Controllers.testsAnamsControllers.testCreationControllers;
+package Controllers.testsAnamsControllers.anamneseCreation;
 
+import Controllers.testsAnamsControllers.testCreationControllers.QCLController;
+import Controllers.testsAnamsControllers.testCreationControllers.QCMController;
+import Controllers.testsAnamsControllers.testCreationControllers.QCUController;
 import Exceptions.AllInputsShouldBeProvidedException;
 import Models.Anamnese.AnamneseSchema;
+import Models.Anamnese.QAAdult;
+import Models.Anamnese.QAChild;
 import Models.Ortophoniste.OrtophonisteSchema;
-import Models.Test.Question.QuestionSchema;
 import Models.Test.TestQstSchema;
 import Models.Test.TestSchema;
 import Utils.Popups;
@@ -22,7 +26,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class QstTestCreationController implements HelloController.InitializeData {
+public class anamnsQKidCreationController implements HelloController.InitializeData {
     private OrtophonisteSchema orthophoniste;
     private ArrayList<TestSchema> mesTests;
     private ArrayList<AnamneseSchema> mesAnamneses;
@@ -31,10 +35,11 @@ public class QstTestCreationController implements HelloController.InitializeData
     private String orthoNom;
     private String orthoPrenom;
     @FXML
-    private ToggleGroup questionType;
+    private ToggleGroup questionAnamType;
     @FXML
     private TextField tf_intitule;
-    private ArrayList<QuestionSchema> questions;
+    private ArrayList<QAAdult> questions;
+
     @FXML
 
     @Override
@@ -97,23 +102,11 @@ public class QstTestCreationController implements HelloController.InitializeData
     }
 
 
-    private void openPopup(Event event, String fxmlPath, String title, ArrayList<QuestionSchema> questions) {
+    private void openPopup(Event event, String fxmlPath, String title) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
             Parent root = (Parent) fxmlLoader.load();
-
-
-            if (questionType.equals("QCM")) {
-                QCMController controller = fxmlLoader.getController();
-                controller.initializeWithQuestions(questions);
-            } else if (questionType.equals("QCU")) {
-                QCUController controller = fxmlLoader.getController();
-                controller.initializeWithQuestions(questions);
-            } else if (questionType.equals("Libre")) {
-                QCLController controller = fxmlLoader.getController();
-                    controller.initializeWithQuestions(questions);
-            }
-
+            QCMController controller = fxmlLoader.getController();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle(title);
@@ -154,27 +147,21 @@ public class QstTestCreationController implements HelloController.InitializeData
 
     public void addQuestion(ActionEvent event) throws Exception {
         try {
-            RadioButton selectedRadioButton = (RadioButton) questionType.getSelectedToggle();
+            RadioButton selectedRadioButton = (RadioButton) questionAnamType.getSelectedToggle();
 
             if (selectedRadioButton == null || tf_intitule == null) throw new AllInputsShouldBeProvidedException();
 
             String selectedQstType = selectedRadioButton.getText();
-            switch (selectedQstType) {
-                case "Ajouter une QCU":
-                    openPopup(event, "QCUPopUp.fxml", "Ajouter un QCU", questions);
-                    break;
-                case "Ajouter une QCM":
-                    openPopup(event, "QCMPopUp.fxml", "Ajouter un QCM",questions);
-                    break;
-                case "Ajouter une QCL":
-                    openPopup(event, "QCLPopup.fxml", "Ajouter un QCL",questions);
-                    break;
-            }
 
-        } catch (AllInputsShouldBeProvidedException e) {
+            openPopup(event, "QAnamPopUp.fxml", "Ajouter une question");
+
+
+        } catch (
+                AllInputsShouldBeProvidedException e) {
             Popups.showErrorMessage("Error", e.getMessage());
             System.out.println(e.getMessage());
         }
+
     }
 
     public void handleSaveTest(ActionEvent event) throws IOException {

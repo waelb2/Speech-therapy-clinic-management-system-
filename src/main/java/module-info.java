@@ -12,20 +12,20 @@ module com.example.tp_poo {
     opens Controllers.dashboardControllers to javafx.fxml;
     exports Controllers.patientsControllers;
     opens Controllers.patientsControllers to javafx.fxml;
-    exports  Controllers.statsControllers;
-    opens  Controllers.statsControllers;
+    exports Controllers.statsControllers;
+    opens Controllers.statsControllers;
     exports Controllers.rdvControllers;
-    opens  Controllers.rdvControllers to javafx.fxml;
+    opens Controllers.rdvControllers to javafx.fxml;
     exports Controllers.settingsControllers;
-    opens  Controllers.settingsControllers;
+    opens Controllers.settingsControllers;
     exports Controllers.testsAnamsControllers;
-    opens  Controllers.testsAnamsControllers to javafx.fxml;
+    opens Controllers.testsAnamsControllers to javafx.fxml;
     exports Controllers.testsAnamsControllers.testCreationControllers;
     opens Controllers.testsAnamsControllers.testCreationControllers to javafx.fxml;
     exports Models.Test.Question;
 
-
-
+    opens Controllers.testsAnamsControllers.anamneseCreation to javafx.fxml;
+    exports Models.Anamnese;
 
 
 }
