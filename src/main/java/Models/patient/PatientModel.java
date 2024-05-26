@@ -74,6 +74,10 @@ public class PatientModel implements PatientDB, Serializable{
     public PatientSchema updateEnfant(PatientSchema enfant){
         return patients.put(enfant.getNom()+"_"+enfant.getPrenom(), enfant);
     }
+    @Override
+    public void deletePatient(String nom, String prenom){
+        patients.remove(nom+"_"+prenom);
+    }
     public void loadPatients() throws IOException, ClassNotFoundException {
         // Check if the file exists
         File file = new File(HelloApplication.currentUserDir + "/MesPatients/patients.dat");

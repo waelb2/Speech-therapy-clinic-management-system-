@@ -2,17 +2,20 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.testsAnamsControllers.testCreationControllers.TestChoiceController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.bilanController.BilansDisplayController">
    <effect>
       <DropShadow />
    </effect>
@@ -37,8 +40,22 @@
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
+                     <graphic>
+                        <Label prefHeight="25.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Créer rendez-vous" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <Label text="+" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.5" />
+                                 </font>
+                              </Label>
+                           </graphic>
+                        </Label>
+                     </graphic>
                   </Button>
-                  <Button fx:id="dossiersPatients" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="#383535">
+                  <Button fx:id="dossiersPatients" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #62B6FF; -fx-cursor: hand;" textFill="#383535">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -57,7 +74,7 @@
                         </Label>
                      </graphic>
                   </Button>
-                  <Button fx:id="testAnam" layoutY="310.0" mnemonicParsing="false" onAction="#handleTestsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #62B6FF; -fx-cursor: hand;" textFill="WHITE">
+                  <Button fx:id="testAnam" layoutY="310.0" mnemonicParsing="false" onAction="#handleTestsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -128,41 +145,82 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label layoutX="25.0" layoutY="155.0" prefHeight="25.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Créer rendez-vous" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <Label text="+" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="17.5" />
-                           </font>
-                        </Label>
-                     </graphic>
-                  </Label>
                </children>
             </Pane>
-            <AnchorPane layoutX="172.0" layoutY="-3.0" prefHeight="600.0" prefWidth="626.0">
+            <AnchorPane layoutX="174.0" prefHeight="600.0" prefWidth="626.0">
                <children>
-                  <Text fill="#1588ea" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout d'un nouveau test" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="75.0">
+                  <HBox layoutY="133.0" prefHeight="459.0" prefWidth="626.0">
+                     <children>
+                        <ScrollPane prefHeight="248.0" prefWidth="626.0" style="-fx-background-color: #fff;">
+                           <content>
+                              <VBox prefHeight="447.0" prefWidth="626.0" style="-fx-background-color: #fff;">
+                                 <children>
+                                    <HBox prefHeight="38.0" prefWidth="626.0" spacing="200.0" style="-fx-border-color: #1588ea; -fx-border-width: 0 0 2 0;">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="34.0" prefWidth="203.0" text="Bilans" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" prefHeight="34.0" prefWidth="203.0" text="Actions" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <ListView fx:id="boList" prefHeight="406.0" prefWidth="626.0" />
+                                 </children>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" height="196.5" radius="112.375" width="255.0">
+                                       <color>
+                                          <Color red="1.0" green="0.914814829826355" blue="0.914814829826355" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+                  <Label layoutX="74.0" layoutY="28.0" prefHeight="34.0" prefWidth="45.0" text="No :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="156.0" layoutY="28.0" prefHeight="34.0" prefWidth="45.0" text="Nom :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="301.0" layoutY="28.0" prefHeight="34.0" prefWidth="68.0" text="Prénom :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numDossier" layoutX="108.0" layoutY="28.0" prefHeight="34.0" prefWidth="22.0" text="02" textFill="#1588ea">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nomPatient" layoutX="202.0" layoutY="28.0" prefHeight="34.0" prefWidth="120.0" text="Bouguessa" textFill="#1588ea">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="prenomPatient" layoutX="369.0" layoutY="28.0" prefHeight="34.0" prefWidth="120.0" text="Wail" textFill="#1588ea">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Text fill="#1588ea" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mes bilans" textAlignment="CENTER" wrappingWidth="626.3999999999999">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Text>
-                  <Button fx:id="questionsTest" layoutX="66.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleQstTestCreationClick" prefHeight="182.0" prefWidth="197.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Test de questions" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="exoTest" layoutX="378.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleExoTestCreationClick" prefHeight="182.0" prefWidth="197.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Test d'exercices" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Button>
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Button mnemonicParsing="false" text="Button" />
    </children>
 </HBox>

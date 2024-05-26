@@ -5,6 +5,8 @@ import Controllers.patientsControllers.DossiersPatientsController;
 import Models.DossierPatient.DossierPatientSchema;
 import Models.FicheDeSuivi.FicheDeSuiviSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.Test.Exercice.ExerciceSchema;
+import Models.Test.Question.QuestionSchema;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class HelloController {
     @FXML
@@ -50,6 +53,8 @@ public class HelloController {
         stage.show();
     }
 
+
+
    public  interface  InitializeData {
         void initialize();
     }
@@ -60,8 +65,14 @@ public class HelloController {
        void initializeWithDossierPatient(DossierPatientSchema dossierPatient, String nom, String prenom);
 
     }
-    public interface InitializeWithFiche{
-        void initializeWithFiche(FicheDeSuiviSchema fiche, DossierPatientSchema dossierPatient , String nom, String prenom);
+    public interface InitializeWithFiche {
+        void initializeWithFiche(FicheDeSuiviSchema fiche, DossierPatientSchema dossierPatient, String nom, String prenom);
+    }
+    public interface InitializeDataWithQuestions{
+        void initializeWithQuestions(ArrayList<QuestionSchema> questions);
+    }
+    public interface InitializeDataWithExercices{
+        void initializeWithExercices(ArrayList<ExerciceSchema> exercices);
     }
     //dashboardController.initilize(orthophoniste);
      public static class ConsultationObject {

@@ -94,4 +94,7 @@ public class RendezVousModel implements RendezVousDB, Serializable {
         }
         return rdvsByDate;
     }
+    public int countRdv(){
+        return rendezVouss.size();
+    }
 }

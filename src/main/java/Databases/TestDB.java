@@ -7,10 +7,11 @@ import Models.Test.TestSchema;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public interface TestDB {
-
-
+    public TreeMap<String,TestSchema> getAllTests();
+    public TestSchema[] getAllTest();
     public TestSchema createTestQst(String nom, String observation, ArrayList<QuestionSchema> questions);
 
     public TestSchema createTestQst(TestQstSchema testQstSchema);

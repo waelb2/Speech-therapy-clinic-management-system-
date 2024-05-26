@@ -6,6 +6,7 @@ import Models.RendezVous.AtelierSchema;
 import Models.RendezVous.ConsultationSchema;
 import Models.RendezVous.RendezVousSchema;
 import Models.patient.PatientSchema;
+import Utils.Popups;
 import com.example.tp_poo.HelloApplication;
 import com.example.tp_poo.HelloController;
 import javafx.collections.FXCollections;
@@ -20,6 +21,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
+
+import java.io.File;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class DossierPatientController implements  HelloController.InitializeWithDossierPatient{
     private OrtophonisteSchema orthophoniste;
@@ -153,6 +160,7 @@ public class DossierPatientController implements  HelloController.InitializeWith
     public void handleBoClick(ActionEvent event) {
         try {
 
+            DossierPatientSchema.redirectToDossierPatient(event,dossier,this.nomPatient.getText(), this.prenomPatient.getText(),"bilans.fxml", "Bilans orthophoniques");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -160,6 +168,34 @@ public class DossierPatientController implements  HelloController.InitializeWith
     public  void handleFicheSuiviClick(ActionEvent event){
         try {
             DossierPatientSchema.redirectToDossierPatient(event,dossier,this.nomPatient.getText(), this.prenomPatient.getText(),"fichesSuivi.fxml", "Fiche de suivi");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void handleDeleteDossier(ActionEvent event){
+        try {
+            HelloApplication.dossierPatientModel.deleteDossierPatient(dossier.getId());
+            HelloApplication.dossierPatientModel.saveDossierPatient();
+            HelloApplication.patientModel.deletePatient(nomPatient.getText(), prenomPatient.getText());
+            HelloApplication.patientModel.savePatients();
+
+            // delete dossier file based on nom_prenom.dat
+            String directoryPath = HelloApplication.currentUserDir + "/dossiersPatients";
+            String fileNameToDelete = nomPatient.getText() + "_" + prenomPatient.getText() + ".dat";
+            Path dir = Paths.get(directoryPath);
+
+            try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.dat")) {
+                for (Path entry : stream) {
+                    if (entry.getFileName().toString().equals(fileNameToDelete)) {
+                        Files.delete(entry);
+                        System.out.println("File " + fileNameToDelete + " deleted successfully.");
+                        return;
+                    }
+                }
+
+            }
+            Popups.showSuccessMessage("Dossier supprimé", "Dossier supprimé avec succès");
+            HelloController.redirectPage(event,"dashboard.fxml", "Dashboard");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -6,6 +6,7 @@ import Models.Ortophoniste.OrtophonisteModel;
 import Models.Ortophoniste.OrtophonisteSchema;
 import Models.RendezVous.RendezVousModel;
 import Models.RendezVous.RendezVousSchema;
+import Models.Test.TestModel;
 import Models.patient.PatientModel;
 import Models.patient.PatientSchema;
 import javafx.application.Application;
@@ -30,6 +31,7 @@ public class HelloApplication extends Application {
     public static PatientModel patientModel = new PatientModel(patients);
     public static RendezVousModel rendezVousModel = new RendezVousModel(rendezVouss);
     public static DossierPatientModel dossierPatientModel = new DossierPatientModel(dossiersPatients);
+    public static TestModel testModel = new TestModel();
     public static String  orthophonistesDir = "./data/orthophonistes";
     public static String appUsersDir = "./data/app_users";
     public static String currentUserDir ;
@@ -61,6 +63,7 @@ public class HelloApplication extends Application {
         rendezVousModel.saveRendezVous();
         // save dossierPatients file
         dossierPatientModel.saveDossierPatient();
+        testModel.saveTests();
         super.stop();
     }
     public static void main(String[] args) {

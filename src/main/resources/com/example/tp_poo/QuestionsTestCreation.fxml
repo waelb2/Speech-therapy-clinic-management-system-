@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.rdvControllers.RdvController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.testsAnamsControllers.testCreationControllers.QstTestCreationController">
     <effect>
         <DropShadow />
     </effect>
@@ -146,7 +147,7 @@
                         </HBox>
                     </children>
                 </Pane>
-                <AnchorPane layoutX="172.0" prefHeight="600.0" prefWidth="626.0">
+                <AnchorPane layoutX="172.0" layoutY="7.0" prefHeight="600.0" prefWidth="626.0">
                     <children>
                         <AnchorPane layoutX="82.0" layoutY="138.0" prefHeight="404.0" prefWidth="463.0" style="-fx-border-color: #1588ea; -fx-background-color: #fff; -fx-border-width: 0.2;">
                             <effect>
@@ -157,30 +158,55 @@
                                 </DropShadow>
                             </effect>
                             <children>
-                                <TextField fx:id="tf_intitule" alignment="CENTER" layoutX="183.0" layoutY="21.0" prefHeight="26.0" prefWidth="98.0" promptText="intitulé" style="-fx-border-color: #1588ea;" />
-                                <Text fx:id="rdvForm" fill="#1588ea" layoutX="61.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intitulé du test :">
+                                <TextField fx:id="tf_intitule" alignment="CENTER" layoutX="182.0" layoutY="79.0" prefHeight="26.0" prefWidth="120.0" promptText="intitulé" style="-fx-border-color: #1588ea;" />
+                                <Text fx:id="rdvForm" fill="#1588ea" layoutX="60.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intitulé du test :">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="tf_Observation" layoutX="181.0" layoutY="66.0" prefHeight="33.0" prefWidth="253.0" promptText="Observation" style="-fx-border-color: #1588ea;" />
-                                <Text fill="#1588ea" layoutX="61.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de questions :">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                </Text>
-                                <ComboBox fx:id="QuestionNumberPicker" layoutX="244.0" layoutY="115.0" prefHeight="26.0" prefWidth="74.0" promptText="00" style="-fx-background-color: #fff; -fx-border-color: #1588ea;" />
+                        <Button fx:id="createRdv1" layoutX="138.0" layoutY="227.0" mnemonicParsing="false" onAction="#addQuestion" prefHeight="48.0" prefWidth="164.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <graphic>
+                              <Label prefHeight="42.0" prefWidth="173.0" style="-fx-cursor: hand;" text="Ajouter une question" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <Label text="+" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="17.5" />
+                                       </font>
+                                    </Label>
+                                 </graphic>
+                              </Label>
+                           </graphic>
+                        </Button>
+                        <RadioButton fx:id="addQCM" layoutX="56.0" layoutY="165.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Ajouter une QCM" textFill="#1588ea">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="questionType" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="addQCU" layoutX="178.0" layoutY="165.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Ajouter une QCU" textFill="#1588ea" toggleGroup="$questionType">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="addQCL" layoutX="307.0" layoutY="165.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #fff;" stylesheets="@../../../radio.css" text="Ajouter une QCL" textFill="#1588ea" toggleGroup="$questionType">
 
-                                <Button fx:id="btn_next" layoutX="355.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleNextButton" style="-fx-background-color: #1588ea; -fx-cursor: hand;" text="Next" textFill="WHITE">
-                                    <font>
-                                        <Font size="16.0" />
-                                    </font>
-                                </Button>
-                        <Text fx:id="rdvForm1" fill="#1588ea" layoutX="61.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observation:">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </RadioButton>
+                        <Button layoutX="284.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleSaveTest" prefHeight="60.0" prefWidth="154.0" style="-fx-background-color: #1588ea;" text="Enregistrer le test" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
-                        </Text>
+                        </Button>
                             </children>
                         </AnchorPane>
                     </children>

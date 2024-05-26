@@ -70,7 +70,7 @@ public class LoginFormController {
 
             //load dossiers patients
             HelloApplication.dossierPatientModel.loadDossierPatient();
-
+            HelloApplication.testModel.loadTests();
 
             HelloController.redirectPage(event, "dashboard.fxml", "Dashboard");
         }catch (UserNotFoundException | EmailNotProvidedException| PasswordNotProvidedException | WrongPasswordException e){

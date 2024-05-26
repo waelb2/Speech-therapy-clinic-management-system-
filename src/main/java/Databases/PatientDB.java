@@ -26,6 +26,7 @@ public interface PatientDB {
     public boolean EnfantExist(String nom, String prenom);
 
     public PatientSchema updateEnfant(PatientSchema enfant);
+    public void deletePatient(String nom, String prenom);
     public PatientSchema[]  getAllPatients();
     public int countPatients();
 }

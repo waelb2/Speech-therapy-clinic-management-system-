@@ -1,13 +1,11 @@
-package Controllers.fichesSuiviControllers;
+package Controllers.bilanController;
 
+import Models.BilanOrthophonique.BilanOrthophoniqueSchema;
 import Models.DossierPatient.DossierPatientSchema;
 import Models.FicheDeSuivi.FicheDeSuiviSchema;
 import Models.Objectif.ObjectifSchema;
 import Models.Objectif.TermeEnum;
 import Models.Ortophoniste.OrtophonisteSchema;
-import Models.Trouble.TroubleCategories;
-import Models.Trouble.TroubleSchema;
-import Models.patient.PatientSchema;
 import Utils.Popups;
 import com.example.tp_poo.HelloApplication;
 import com.example.tp_poo.HelloController;
@@ -19,31 +17,25 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.util.ArrayList;
 
-public class FichiSuiviController implements HelloController.InitializeWithDossierPatient{
+public class BilansDisplayController implements HelloController.InitializeWithDossierPatient {
     private OrtophonisteSchema orthophoniste;
     @FXML
     private Label orthoField;
     @FXML
-    private ListView ficheList ;
+    private ListView boList ;
     @FXML
     private Label numDossier;
     @FXML
     private Label nomPatient;
     @FXML
     private Label prenomPatient;
-    @FXML
-    private TextField tf_objectif;
-    @FXML
-    private
-    ComboBox objectifPicker;
     private String orthoNom;
     private String orthoPrenom;
-    private final ObservableList<FicheDeSuiviSchema> fiches = FXCollections.observableArrayList();
+    private final ObservableList<BilanOrthophoniqueSchema> bilans = FXCollections.observableArrayList();
     private boolean isInitialized = false;
     private ArrayList<ObjectifSchema> objectifs = new ArrayList<>();
     private DossierPatientSchema dossier;
@@ -64,22 +56,21 @@ public class FichiSuiviController implements HelloController.InitializeWithDossi
         this.nomPatient.setText(nom);
         this.prenomPatient.setText(prenom);
         // Add patients to the list
-        fiches.addAll(dossierPatient.getFichesDesSuivis());
+        bilans.addAll(dossierPatient.getbO());
         dossier = dossierPatient;
 
-        ObservableList<TermeEnum> options = FXCollections.observableArrayList(TermeEnum.values());
-        objectifPicker.setItems(options);
+
 
         // Set custom cell factory
-        ficheList.setCellFactory(new Callback<ListView<FicheDeSuiviSchema>, ListCell<FicheDeSuiviSchema>>() {
+        boList.setCellFactory(new Callback<ListView<BilanOrthophoniqueSchema>, ListCell<BilanOrthophoniqueSchema>>() {
             @Override
-            public ListCell<FicheDeSuiviSchema> call(ListView<FicheDeSuiviSchema> listView) {
-                return new ListCell<FicheDeSuiviSchema>() {
+            public ListCell<BilanOrthophoniqueSchema> call(ListView<BilanOrthophoniqueSchema> listView) {
+                return new ListCell<BilanOrthophoniqueSchema>() {
 
                     @Override
-                    protected void updateItem(FicheDeSuiviSchema fiche, boolean empty) {
-                        super.updateItem(fiche, empty);
-                        if (empty || fiche == null) {
+                    protected void updateItem( BilanOrthophoniqueSchema bilan, boolean empty) {
+                        super.updateItem(bilan, empty);
+                        if (empty || bilan == null) {
                             setText(null);
                             setGraphic(null);
                         } else {
@@ -87,7 +78,7 @@ public class FichiSuiviController implements HelloController.InitializeWithDossi
 
 
                             HBox hBox = new HBox(10);
-                            Label numLabel = new Label("Fiche du suivi num : "+ ficheList.getItems().indexOf(fiche) + 1);
+                            Label numLabel = new Label("Bilan Orthophoniste num : "+ boList.getItems().indexOf(bilan) + 1);
                             Button btn = new Button("Consulter");
 
                             numLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: black; -fx-pref-width: 200.6; -fx-pref-height: 34.4; -fx-alignment:center ");
@@ -98,13 +89,12 @@ public class FichiSuiviController implements HelloController.InitializeWithDossi
                             btnBox.getChildren().add(btn);
                             btnBox.setMargin(btn, new Insets(0, 0, 0, 245));
 
-                            ficheList.setSelectionModel(null);
+                            boList.setSelectionModel(null);
 
                             btn.setOnAction(event -> {
                                 try {
                                     // redirect to dossier patient
 
-                                    FicheDeSuiviSchema.redirectToFicheSuivi(event ,fiche,dossier,nomPatient.getText(), prenomPatient.getText(), "fichSuivi.fxml","Fiche de suivi");
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -117,7 +107,7 @@ public class FichiSuiviController implements HelloController.InitializeWithDossi
             }
         });
 
-        ficheList.setItems(fiches);
+        boList.setItems(bilans);
         // Set the flag to true after initialization
         isInitialized = true;
     }
@@ -170,17 +160,7 @@ public class FichiSuiviController implements HelloController.InitializeWithDossi
             e.printStackTrace();
         }
     }
-    public void handleAddObjectif(ActionEvent event){
-        if(tf_objectif.getText().isEmpty() || objectifPicker.getValue() == null){
-            Popups.showErrorMessage("Erreur", "Objectif et terme doivent être remplis");
-            return;
-        }
-        String objectifNom = tf_objectif.getText();
-        TermeEnum objectifCategory = (TermeEnum) objectifPicker.getValue();
-        ObjectifSchema objectif = new ObjectifSchema(objectifNom,objectifCategory);
-        objectifs.add(objectif);
-        tf_objectif.setText("");
-    }
+
     public void handleCreateButton(ActionEvent event){
         // create new fiche
         FicheDeSuiviSchema newFiche = new FicheDeSuiviSchema(objectifs);
@@ -190,5 +170,4 @@ public class FichiSuiviController implements HelloController.InitializeWithDossi
 
         HelloApplication.dossierPatientModel.updateDossierPatient(dossier);
         HelloApplication.dossierPatientModel.saveDossierPatient();
-    }
-}
+    }}

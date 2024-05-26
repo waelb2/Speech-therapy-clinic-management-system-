@@ -38,9 +38,13 @@ public class TestQstSchema extends TestSchema implements Serializable {
         return scoreMoy;
     }
 
-    public TestQstSchema(String nom, String observation,ArrayList<QuestionSchema> questions) {
-        super(nom, observation);
+    public TestQstSchema(String nom,ArrayList<QuestionSchema> questions) {
+        super(nom);
         this.questions = questions;
         this.scoreMoy = calculScore(questions);
     }
+    public TestQstSchema(String nom){
+        super(nom);
+    }
+
 }

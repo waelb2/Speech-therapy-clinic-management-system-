@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.CheckBox?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.testsAnamsControllers.testCreationControllers.QCUController">
+   <children>
+      <TextField fx:id="questionField" layoutX="21.0" layoutY="48.0" prefHeight="26.0" prefWidth="424.0" promptText="Entrer l'énoncé de la question" style="-fx-border-color: #1588ea;" />
+      <Button layoutX="194.0" layoutY="167.0" onAction="#submitQCU" style="-fx-background-color: #1588ea;" text="Enregistrer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="22.0" layoutY="167.0" onAction="#addProposition" style="-fx-background-color: #1588ea;" text="Ajotuer une proposition" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <TextField fx:id="propsitionField" layoutX="22.0" layoutY="106.0" prefHeight="26.0" prefWidth="366.0" promptText="Entrer une proposition" style="-fx-border-color: #1588ea;" />
+      <CheckBox fx:id="value" layoutX="400.0" layoutY="110.0" mnemonicParsing="false" text="Vraie" />
+   </children>
+</AnchorPane>

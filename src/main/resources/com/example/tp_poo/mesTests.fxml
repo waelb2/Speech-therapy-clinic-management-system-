@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.AmbientLight?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -11,154 +10,200 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.testsAnamsControllers.TestsAnamsControllers">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.testsAnamsControllers.mesTestsController">
    <effect>
       <DropShadow />
    </effect>
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="828.0">
+      <AnchorPane prefHeight="600.0" prefWidth="828.0" />
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;">
+         <effect>
+            <DropShadow />
+         </effect>
          <children>
-            <Pane layoutY="-7.0" prefHeight="607.0" prefWidth="172.0" style="-fx-background-color: #fff;">
-               <effect>
-                  <DropShadow radius="7.66" width="11.64">
-                     <color>
-                        <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
-                     </color>
-                  </DropShadow>
-               </effect>
+            <AnchorPane prefHeight="600.0" prefWidth="828.0">
                <children>
-                  <ImageView fx:id="logoImage" fitHeight="85.0" fitWidth="135.0" layoutX="20.0" layoutY="24.0" onMouseClicked="#handleLogoClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../../../assets/bluelogo.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="createRdv" layoutX="16.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleAddRdvClick" prefHeight="36.0" prefWidth="142.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="dossiersPatients" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="#383535">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <graphic>
-                        <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text=" Dossiers patient" textFill="#404040">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../assets/patient.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="testAnam" layoutY="310.0" mnemonicParsing="false" onAction="#handleTestsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #62B6FF; -fx-cursor: hand;" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <graphic>
-                        <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text=" Testes et Anams" textFill="#404040">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../assets/examen.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="stats" layoutY="361.0" mnemonicParsing="false" onAction="#handleStatsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <graphic>
-                        <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text="  Statistiques" textFill="#404040">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../assets/diagramme.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="settings" layoutY="412.0" mnemonicParsing="false" onAction="#handleSettingsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <graphic>
-                        <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text="  Paramètres" textFill="#404040">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../assets/parametres-cog.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
-                     </graphic>
-                  </Button>
-                  <HBox layoutX="18.0" layoutY="521.0" prefHeight="26.0" prefWidth="154.0">
+                  <Pane layoutY="-7.0" prefHeight="607.0" prefWidth="172.0" style="-fx-background-color: #fff;">
+                     <effect>
+                        <DropShadow radius="7.66" width="11.64">
+                           <color>
+                              <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                      <children>
-                        <Label prefHeight="26.0" prefWidth="28.0" text=" Dr :" textAlignment="CENTER">
+                        <ImageView fx:id="logoImage1" fitHeight="85.0" fitWidth="135.0" layoutX="20.0" layoutY="24.0" onMouseClicked="#handleLogoClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@../../../assets/bluelogo.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="createRdv1" layoutX="16.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleAddRdvClick" prefHeight="36.0" prefWidth="142.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="System Bold" size="13.0" />
                            </font>
-                        </Label>
-                        <Label fx:id="orthoField" prefHeight="26.0" prefWidth="120.0" textAlignment="CENTER" textFill="#1588ea">
+                           <graphic>
+                              <Label prefHeight="25.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Créer rendez-vous" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <Label text="+" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="17.5" />
+                                       </font>
+                                    </Label>
+                                 </graphic>
+                              </Label>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="dossiersPatients1" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: WHITE;" textFill="#383535">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="System Bold" size="13.0" />
                            </font>
-                        </Label>
+                           <graphic>
+                              <Label fx:id="dossiersPatients1" prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text=" Dossiers patient" textFill="#404040">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../assets/patient.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="testAnam1" layoutY="310.0" mnemonicParsing="false" onAction="#handleTestsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #62B6FF; -fx-cursor: hand;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                           <graphic>
+                              <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text=" Testes et Anams" textFill="#404040">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../assets/examen.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="stats1" layoutY="361.0" mnemonicParsing="false" onAction="#handleStatsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                           <graphic>
+                              <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text="  Statistiques" textFill="#404040">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../assets/diagramme.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="settings1" layoutY="412.0" mnemonicParsing="false" onAction="#handleSettingsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-cursor: hand;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                           <graphic>
+                              <Label prefHeight="26.0" prefWidth="132.0" style="-fx-cursor: hand;" text="  Paramètres" textFill="#404040">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../assets/parametres-cog.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                           </graphic>
+                        </Button>
+                        <HBox layoutX="18.0" layoutY="521.0" prefHeight="26.0" prefWidth="154.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="28.0" text=" Dr :" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="orthoField1" prefHeight="26.0" prefWidth="120.0" textAlignment="CENTER" textFill="#1588ea">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <Label layoutX="25.0" layoutY="155.0" prefHeight="25.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Créer rendez-vous" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <Label text="+" textFill="WHITE">
+                  </Pane>
+                  <AnchorPane layoutX="172.0" prefHeight="600.0" prefWidth="626.0">
+                     <children>
+                        <HBox layoutX="-2.0" layoutY="194.0" prefHeight="406.0" prefWidth="626.0">
+                           <children>
+                              <ScrollPane prefHeight="406.0" prefWidth="620.0" style="-fx-background-color: #fff;">
+                                 <content>
+                                    <VBox prefHeight="404.0" prefWidth="626.0" style="-fx-background-color: #fff;">
+                                       <children>
+                                          <HBox prefHeight="38.0" prefWidth="606.0" style="-fx-border-color: #1588ea; -fx-border-width: 0 0 2 0;">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="36.0" prefWidth="162.0" text="Nom" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label alignment="CENTER" prefHeight="36.0" prefWidth="186.0" text="Type du test" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label alignment="CENTER" prefHeight="36.0" prefWidth="185.0" text="Actions" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <ListView fx:id="testsList" prefHeight="352.0" prefWidth="608.0" />
+                                       </children>
+                                       <effect>
+                                          <DropShadow blurType="ONE_PASS_BOX" height="196.5" radius="112.375" width="255.0">
+                                             <color>
+                                                <Color red="1.0" green="0.914814829826355" blue="0.914814829826355" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </HBox>
+                        <Text fill="#1588ea" layoutX="-2.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mes tests" textAlignment="CENTER" wrappingWidth="626.3999999999999">
                            <font>
-                              <Font name="System Bold" size="17.5" />
+                              <Font name="System Bold" size="26.0" />
                            </font>
-                        </Label>
-                     </graphic>
-                  </Label>
-               </children>
-            </Pane>
-            <AnchorPane layoutX="172.0" layoutY="-7.0" prefHeight="600.0" prefWidth="626.0">
-               <children>
-                  <Text fill="#1588ea" layoutX="-2.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mes tests " textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="50.0">
-                     <font>
-                        <Font name="System Bold" size="26.0" />
-                     </font>
-                  </Text>
-                  <AmbientLight color="CHARTREUSE" layoutX="102.0" layoutY="192.0" lightOn="true" />
-                  <ButtonBar layoutX="73.0" layoutY="220.0" prefHeight="40.0" prefWidth="200.0" />
-                  <ScrollPane layoutX="62.0" layoutY="104.0" prefHeight="452.0" prefWidth="526.0" />
+                        </Text>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
-      </AnchorPane>
-      <Button mnemonicParsing="false" text="Button" />
+      </HBox>
    </children>
 </HBox>
