@@ -1,9 +1,13 @@
-package Controllers.testsAnamsControllers.testCreationControllers;
+package Controllers.testsAnamsControllers.anamneseCreation;
 
+import Controllers.testsAnamsControllers.testCreationControllers.QCLController;
+import Controllers.testsAnamsControllers.testCreationControllers.QCMController;
+import Controllers.testsAnamsControllers.testCreationControllers.QCUController;
 import Exceptions.AllInputsShouldBeProvidedException;
 import Models.Anamnese.AnamneseSchema;
+import Models.Anamnese.QAAdult;
+import Models.Anamnese.QAChild;
 import Models.Ortophoniste.OrtophonisteSchema;
-import Models.Test.TestExoSchema;
 import Models.Test.TestQstSchema;
 import Models.Test.TestSchema;
 import Utils.Popups;
@@ -20,10 +24,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.security.PrivateKey;
 import java.util.ArrayList;
 
-public class ExoTestCreationController implements HelloController.InitializeData {
+public class anamnsQKidCreationController implements HelloController.InitializeData {
     private OrtophonisteSchema orthophoniste;
     private ArrayList<TestSchema> mesTests;
     private ArrayList<AnamneseSchema> mesAnamneses;
@@ -32,12 +35,10 @@ public class ExoTestCreationController implements HelloController.InitializeData
     private String orthoNom;
     private String orthoPrenom;
     @FXML
-    private ToggleGroup questionType;
+    private ToggleGroup questionAnamType;
     @FXML
     private TextField tf_intitule;
-    @FXML
-    private TextField tf_requiredMaterial;
-
+    private ArrayList<QAAdult> questions;
 
     @FXML
 
@@ -105,6 +106,7 @@ public class ExoTestCreationController implements HelloController.InitializeData
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
             Parent root = (Parent) fxmlLoader.load();
+            QCMController controller = fxmlLoader.getController();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle(title);
@@ -119,7 +121,16 @@ public class ExoTestCreationController implements HelloController.InitializeData
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
             Parent root = fxmlLoader.load();
 
-
+            if (questionType.equals("QCM")) {
+                QCMController controller = fxmlLoader.getController();
+                controller.loadQuestion(question);
+            } else if (questionType.equals("QCU")) {
+                QCUController controller = fxmlLoader.getController();
+                controller.loadQuestion(question);
+            } else if (questionType.equals("Libre")) {
+                QCLController controller = fxmlLoader.getController();
+                controller.loadQuestion(question);
+            }
 
             DialogPane dialogPane = new DialogPane();
             dialogPane.setContent(root);
@@ -133,25 +144,32 @@ public class ExoTestCreationController implements HelloController.InitializeData
         }
     }
 
-    public void addExercice(ActionEvent event) {
+
+    public void addQuestion(ActionEvent event) throws Exception {
         try {
-            if( tf_intitule == null) throw new AllInputsShouldBeProvidedException();
-            openPopup(event, "addExoPopup.fxml", "Ajouter un QCL");
-        } catch (AllInputsShouldBeProvidedException e) {
+            RadioButton selectedRadioButton = (RadioButton) questionAnamType.getSelectedToggle();
+
+            if (selectedRadioButton == null || tf_intitule == null) throw new AllInputsShouldBeProvidedException();
+
+            String selectedQstType = selectedRadioButton.getText();
+
+            openPopup(event, "QAnamPopUp.fxml", "Ajouter une question");
+
+
+        } catch (
+                AllInputsShouldBeProvidedException e) {
             Popups.showErrorMessage("Error", e.getMessage());
             System.out.println(e.getMessage());
         }
+
     }
 
     public void handleSaveTest(ActionEvent event) throws IOException {
         String nom = tf_intitule.getText();
-        TestExoSchema test = new TestExoSchema(nom);
-        HelloApplication.testModel.createTestExo(test);
+        TestQstSchema test = new TestQstSchema(nom);
+        System.out.println(HelloApplication.testModel.createTestQst(test).getNom());
+
         HelloApplication.testModel.saveTests();
-        Popups.showSuccessMessage("Test créé", "Le test a été créé avec succès");
     }
 
-
 }
-
-

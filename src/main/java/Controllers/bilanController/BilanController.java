@@ -160,8 +160,8 @@ public class BilanController implements  HelloController.InitializeWithDossierPa
              DossierPatientSchema.saveDossierPatient(dossier, HelloApplication.currentUser.getEmail(), patientNom, patientPrenom);
 
             // Redirect to the next page
-            FicheDeSuiviSchema fiche = dossier.getFichesDesSuivis().get(dossier.getFichesDesSuivis().size() - 1);
             if(rdvtype == "Suivi"){
+                FicheDeSuiviSchema fiche = dossier.getFichesDesSuivis().get(dossier.getFichesDesSuivis().size() - 1);
                 FicheDeSuiviSchema.redirectToFicheSuivi(event, fiche,dossier,patientNom, patientPrenom,"fichEvaluation.fxml", "Fiche de suivi");
 
             }

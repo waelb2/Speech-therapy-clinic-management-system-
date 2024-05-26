@@ -9,7 +9,8 @@ public class TestExoSchema extends TestSchema implements Serializable {
     private ArrayList<ExerciceSchema> exercices;
     private double scoreMoy;
 
-    public TestExoSchema(ArrayList<ExerciceSchema> exercices, double scoreMoy) {
+    public TestExoSchema(String nom,ArrayList<ExerciceSchema> exercices, double scoreMoy) {
+        super(nom);
         this.exercices = exercices;
         this.scoreMoy = scoreMoy;
     }
