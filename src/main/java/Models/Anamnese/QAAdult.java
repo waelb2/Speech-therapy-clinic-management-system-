@@ -1,5 +1,9 @@
 package Models.Anamnese;
 
+import Models.Test.Question.QuestionSchema;
+
+import java.util.ArrayList;
+
 public class QAAdult extends AnamneseQuestion{
     private AnamnQstCateAdult categorie;
 
@@ -8,6 +12,12 @@ public class QAAdult extends AnamneseQuestion{
         this.categorie = categorie;
     }
 
+    public QAAdult(String enonce) {
+        super(enonce);
+    }
+
+
+
     public AnamnQstCateAdult getCategorie() {
         return categorie;
     }
@@ -15,4 +25,7 @@ public class QAAdult extends AnamneseQuestion{
     public void setCategorie(AnamnQstCateAdult categorie) {
         this.categorie = categorie;
     }
+
+    public void initializeWithQuestionsAnam(ArrayList<QAAdult> questions){
+    };
 }

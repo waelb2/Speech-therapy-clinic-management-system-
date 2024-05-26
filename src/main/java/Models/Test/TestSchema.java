@@ -7,10 +7,6 @@ public abstract class TestSchema {
         this.nom = nom;
     }
 
-    public TestSchema() {
-
-    }
-
     public String getNom() {
         return nom;
     }

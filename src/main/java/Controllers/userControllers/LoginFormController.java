@@ -2,6 +2,7 @@ package Controllers.userControllers;
 
 import Models.DossierPatient.DossierPatientSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
+import Models.Test.TestSchema;
 import Models.patient.PatientModel;
 import Utils.Popups;
 import com.example.tp_poo.HelloApplication;
@@ -71,6 +72,10 @@ public class LoginFormController {
             //load dossiers patients
             HelloApplication.dossierPatientModel.loadDossierPatient();
             HelloApplication.testModel.loadTests();
+            for(TestSchema testSchema : HelloApplication.testModel.getAllTest()){
+                System.out.println(testSchema.getNom());
+                System.out.println(testSchema instanceof TestSchema);
+            }
 
             HelloController.redirectPage(event, "dashboard.fxml", "Dashboard");
         }catch (UserNotFoundException | EmailNotProvidedException| PasswordNotProvidedException | WrongPasswordException e){
