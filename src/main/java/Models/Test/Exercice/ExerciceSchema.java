@@ -1,8 +1,10 @@
 package Models.Test.Exercice;
 
+import Models.Test.TestSchema;
+
 import java.io.Serializable;
 
-public class ExerciceSchema implements Serializable {
+public class ExerciceSchema extends TestSchema implements Serializable {
     private String nom;
     private String materielRequis;
     private int score;

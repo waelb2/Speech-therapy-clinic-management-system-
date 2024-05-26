@@ -18,8 +18,10 @@ module com.example.tp_poo {
     opens Controllers.rdvControllers to javafx.fxml;
     exports Controllers.settingsControllers;
     opens Controllers.settingsControllers;
-    exports Controllers.testsAnamsControllers;
-    opens Controllers.testsAnamsControllers to javafx.fxml;
+    exports Controllers.fichesSuiviControllers;
+    opens  Controllers.fichesSuiviControllers;
+    exports Controllers.bilanController;
+    opens  Controllers.bilanController;
     exports Controllers.testsAnamsControllers.testCreationControllers;
     opens Controllers.testsAnamsControllers.testCreationControllers to javafx.fxml;
     exports Models.Test.Question;

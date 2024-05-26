@@ -10,4 +10,5 @@ public interface RendezVousDB {
     public RendezVousSchema updateRendezVous(RendezVousSchema rendezVous);
     public RendezVousSchema findRendezVous(LocalDate date, String heure);
     public boolean RendezVousExist(LocalDate date, String heure);
+    public int countRdv ();
 }

@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.patientsControllers.DossiersPatientsController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.fichesSuiviControllers.FicheConsultationController">
    <effect>
       <DropShadow />
    </effect>
@@ -55,7 +55,7 @@
                         </Label>
                      </graphic>
                   </Button>
-                  <Button fx:id="dossiersPatients" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #62B6FF; -fx-cursor: hand;" textFill="#383535">
+                  <Button fx:id="dossiersPatients" layoutY="259.0" mnemonicParsing="false" onAction="#handlePatientsClick" prefHeight="36.0" prefWidth="172.0" style="-fx-background-color: #fFF; -fx-cursor: hand;" textFill="#383535">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -149,42 +149,44 @@
             </Pane>
             <AnchorPane layoutX="174.0" prefHeight="600.0" prefWidth="626.0">
                <children>
-                  <Text fill="#1588ea" layoutX="-2.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mes Patients" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="50.0">
+                  <Button fx:id="createRdv1" alignment="CENTER" contentDisplay="CENTER" layoutX="383.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleAddRdvClick" prefHeight="36.0" prefWidth="142.0" style="-fx-background-color: #1588ea; -fx-cursor: hand;" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="26.0" />
+                        <Font name="System Bold" size="13.0" />
                      </font>
-                  </Text>
-                  <HBox layoutX="-2.0" layoutY="194.0" prefHeight="406.0" prefWidth="626.0">
+                     <graphic>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Créer une anamnèse" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <HBox layoutX="-4.0" layoutY="182.0" prefHeight="411.0" prefWidth="626.0">
                      <children>
-                        <ScrollPane prefHeight="406.0" prefWidth="620.0" style="-fx-background-color: #fff;">
+                        <ScrollPane prefHeight="414.0" prefWidth="626.0" style="-fx-background-color: #fff;">
                            <content>
-                              <VBox prefHeight="404.0" prefWidth="626.0" style="-fx-background-color: #fff;">
+                              <VBox prefHeight="406.0" prefWidth="630.0" style="-fx-background-color: #fff;">
                                  <children>
-                                    <HBox prefHeight="38.0" prefWidth="606.0" style="-fx-border-color: #1588ea; -fx-border-width: 0 0 2 0;">
+                                    <HBox prefHeight="36.0" prefWidth="581.0" style="-fx-border-color: #1588ea; -fx-border-width: 0 0 2 0;">
                                        <children>
-                                          <Label alignment="CENTER" prefHeight="34.0" prefWidth="65.0" text="No" textAlignment="CENTER">
+                                          <Label alignment="CENTER" prefHeight="33.0" prefWidth="260.0" text="Objectif" textAlignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER" prefHeight="36.0" prefWidth="162.0" text="Nom" textAlignment="CENTER">
+                                          <Label alignment="CENTER" prefHeight="33.0" prefWidth="326.0" text="Durée" textAlignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER" prefHeight="36.0" prefWidth="186.0" text="Prénom" textAlignment="CENTER">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER" prefHeight="36.0" prefWidth="185.0" text="Actions" textAlignment="CENTER">
+                                          <Label alignment="CENTER" prefHeight="33.0" prefWidth="326.0" text="Note" textAlignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </HBox>
-                                    <ListView fx:id="patientsList" prefHeight="352.0" prefWidth="608.0" />
+                                    <ListView fx:id="objectifsList" prefHeight="369.0" prefWidth="630.0" />
                                  </children>
                                  <effect>
                                     <DropShadow blurType="ONE_PASS_BOX" height="196.5" radius="112.375" width="255.0">
@@ -198,7 +200,13 @@
                         </ScrollPane>
                      </children>
                   </HBox>
-               </children></AnchorPane>
+               </children>
+            </AnchorPane>
+            <Text fill="#1588ea" layoutX="172.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fiche du suivi" textAlignment="CENTER" wrappingWidth="626.3999999999999" AnchorPane.topAnchor="50.0">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

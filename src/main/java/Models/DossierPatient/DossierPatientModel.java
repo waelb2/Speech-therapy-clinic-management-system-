@@ -73,4 +73,7 @@ public class DossierPatientModel implements DossierPatientDB {
             dossiers = new TreeMap<>();
         }
     }
+    public ArrayList<DossierPatientSchema> getDossiers() {
+        return new ArrayList<>(dossiers.values());
+    }
 }

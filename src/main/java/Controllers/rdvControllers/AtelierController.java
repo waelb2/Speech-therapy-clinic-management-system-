@@ -206,6 +206,7 @@ public class AtelierController implements HelloController.InitializeDataWithObje
 
                  DossierPatientSchema foundDossierPatient = HelloApplication.dossierPatientModel.findDossierPatient(numDossier);
                  foundDossierPatient.addRdv(newAtelier);
+                 DossierPatientSchema.saveDossierPatient(foundDossierPatient, ortho,patient.getNom(),patient.getPrenom());
 
                  HelloApplication.dossierPatientModel.updateDossierPatient(foundDossierPatient);
 

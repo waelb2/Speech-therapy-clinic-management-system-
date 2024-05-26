@@ -1,6 +1,8 @@
 package Models.Trouble;
 
-public class TroubleSchema {
+import java.io.Serializable;
+
+public class TroubleSchema implements Serializable {
     private String nom;
     private TroubleCategories categorie;
 

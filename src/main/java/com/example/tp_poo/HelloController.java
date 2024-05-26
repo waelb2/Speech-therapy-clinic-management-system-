@@ -2,6 +2,8 @@ package com.example.tp_poo;
 
 import Controllers.dashboardControllers.DashboardController;
 import Controllers.patientsControllers.DossiersPatientsController;
+import Models.DossierPatient.DossierPatientSchema;
+import Models.FicheDeSuivi.FicheDeSuiviSchema;
 import Models.Ortophoniste.OrtophonisteSchema;
 import Models.Test.Exercice.ExerciceSchema;
 import Models.Test.Question.QuestionSchema;
@@ -58,6 +60,13 @@ public class HelloController {
     }
     public interface InitializeDataWithObject {
         void initializeWithData(ConsultationObject consultationObject);
+    }
+    public interface InitializeWithDossierPatient{
+       void initializeWithDossierPatient(DossierPatientSchema dossierPatient, String nom, String prenom);
+
+    }
+    public interface InitializeWithFiche {
+        void initializeWithFiche(FicheDeSuiviSchema fiche, DossierPatientSchema dossierPatient, String nom, String prenom);
     }
     public interface InitializeDataWithQuestions{
         void initializeWithQuestions(ArrayList<QuestionSchema> questions);

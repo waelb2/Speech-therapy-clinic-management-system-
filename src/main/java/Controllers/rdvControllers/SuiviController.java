@@ -145,8 +145,11 @@ public class SuiviController implements HelloController.InitializeDataWithObject
             //Add suivi to dossierPatient
             DossierPatientSchema dossierPatient = HelloApplication.dossierPatientModel.findDossierPatient(numDossier);
             dossierPatient.addRdv(newSuivi);
+
             HelloApplication.dossierPatientModel.updateDossierPatient(dossierPatient);
             HelloApplication.dossierPatientModel.saveDossierPatient();
+
+            DossierPatientSchema.saveDossierPatient(dossierPatient,HelloApplication.currentUser.getEmail(), nom, prenom);
 
             Popups.showSuccessMessage("Created", "Suivi ajouté avec succès");
 
